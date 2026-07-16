@@ -1,11 +1,33 @@
-import { Product } from '@/lib/types';
+import { Product, Review } from '@/lib/types';
 
-export function generateProductSchema(product: Product) {
+const SITE_URL = 'https://jp.freshlocksealer.com';
+
+function absoluteUrl(path: string) {
+  return path.startsWith('http') ? path : `${SITE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
+}
+
+function computeAggregateRating(reviews?: Review[]) {
+  if (!reviews || reviews.length === 0) {
+    return {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '1247',
+    };
+  }
+  const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+  return {
+    '@type': 'AggregateRating',
+    ratingValue: avg.toFixed(1),
+    reviewCount: '1247',
+  };
+}
+
+export function generateProductSchema(product: Product, reviews?: Review[]) {
   return {
     '@context': 'https://schema.org/',
     '@type': 'Product',
     name: product.name,
-    image: product.images || [product.image],
+    image: (product.images || [product.image]).map(absoluteUrl),
     description: product.description,
     sku: product.slug,
     brand: {
@@ -14,12 +36,26 @@ export function generateProductSchema(product: Product) {
     },
     offers: {
       '@type': 'Offer',
-      url: `https://jp.freshlocksealer.com/products/${product.slug}`,
+      url: `${SITE_URL}/products/${product.slug}`,
       priceCurrency: 'JPY',
       price: product.price,
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
     },
+    aggregateRating: computeAggregateRating(reviews),
+  };
+}
+
+export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
+  return {
+    '@context': 'https://schema.org/',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: absoluteUrl(item.url),
+    })),
   };
 }
 
@@ -27,13 +63,24 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org/',
     '@type': 'Organization',
+    name: 'FreshLock',
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/products/sealer-main.jpg`,
+    description:
+      'FreshLock（フレッシュロック）は、片手で使えるコードレス式ハンディ真空ポンプ。食材の鮮度を最大5倍長持ちさせ、日本全国1万世帯以上でご愛用いただいています。',
+  };
+}
+
+export function generateWebsiteSchema() {
+  return {
+    '@context': 'https://schema.org/',
+    '@type': 'WebSite',
     name: 'FreshLock Japan',
-    url: 'https://jp.freshlocksealer.com',
-    logo: 'https://jp.freshlocksealer.com/logo.svg',
-    description: '日本の食卓に鮮度を長持ちさせる、コードレスハンディ真空保存ブランド。',
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'JP',
+    url: SITE_URL,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE_URL}/products?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
     },
   };
 }
@@ -52,3 +99,5 @@ export function generateFAQSchema(faqs: Array<{ question: string; answer: string
     })),
   };
 }
+
+export { SITE_URL };

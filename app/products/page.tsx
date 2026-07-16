@@ -1,118 +1,34 @@
-'use client';
-
-import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import type { Metadata } from 'next';
 import { products } from '@/lib/data';
+import ProductsClient from './ProductsClient';
 
-const categories = [
-  { value: 'all', label: 'すべて' },
-  { value: 'devices', label: '本体' },
-  { value: 'bags', label: '真空チャック袋' },
-  { value: 'kits', label: 'セット・キット' },
-];
+export const metadata: Metadata = {
+  title: 'ハンディ真空ポンプ・真空保存袋の公式通販',
+  description:
+    'FreshLock（フレッシュロック）公式オンラインストア。コードレス式ハンディ真空ポンプ、スターターキット、繰り返し使える真空チャック袋を販売。¥8,000以上で全国送料無料。',
+  alternates: { canonical: '/products' },
+};
 
-const sortOptions = [
-  { value: 'default', label: 'おすすめ順' },
-  { value: 'price-asc', label: '価格：安い順' },
-  { value: 'price-desc', label: '価格：高い順' },
-  { value: 'name', label: '名前順' },
-];
+const itemListSchema = {
+  '@context': 'https://schema.org/',
+  '@type': 'ItemList',
+  itemListElement: products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://jp.freshlocksealer.com/products/${p.slug}`,
+    name: p.name,
+    image: `https://jp.freshlocksealer.com${p.image}`,
+  })),
+};
 
 export default function ProductsPage() {
-  const [category, setCategory] = useState('all');
-  const [sort, setSort] = useState('default');
-
-  const filtered = useMemo(() => {
-    let list = category === 'all' ? [...products] : products.filter((p) => p.category === category);
-    switch (sort) {
-      case 'price-asc':
-        list.sort((a, b) => a.price - b.price);
-        break;
-      case 'price-desc':
-        list.sort((a, b) => b.price - a.price);
-        break;
-      case 'name':
-        list.sort((a, b) => a.name.localeCompare(b.name, 'ja'));
-        break;
-    }
-    return list;
-  }, [category, sort]);
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header */}
-      <div className="text-center mb-10">
-        <h1 className="section-title">製品一覧</h1>
-        <p className="section-subtitle">
-          鮮度を密封して食品ロスを減らす、FreshLockの全製品ラインナップ。
-        </p>
-      </div>
-
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10">
-        <div className="flex flex-wrap gap-2">
-          {categories.map((c) => (
-            <button
-              key={c.value}
-              onClick={() => setCategory(c.value)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                category === c.value
-                  ? 'bg-primary text-white'
-                  : 'bg-white text-gray-600 hover:bg-gray-100 border'
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
-        <select
-          value={sort}
-          onChange={(e) => setSort(e.target.value)}
-          className="border rounded-lg px-4 py-2 text-sm bg-white"
-        >
-          {sortOptions.map((o) => (
-            <option key={o.value} value={o.value}>
-              {o.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filtered.map((p) => (
-          <Link
-            key={p.slug}
-            href={`/products/${p.slug}`}
-            className="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition"
-          >
-            <div className="relative overflow-hidden">
-              <img
-                src={p.image}
-                alt={p.name}
-                className="w-full aspect-square object-cover group-hover:scale-105 transition duration-300"
-              />
-              {p.badge && (
-                <span className="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
-                  {p.badge}
-                </span>
-              )}
-            </div>
-            <div className="p-6">
-              <h2 className="text-lg font-bold text-primary mb-2">{p.name}</h2>
-              <p className="text-gray-500 text-sm mb-4 line-clamp-2">{p.shortDescription}</p>
-              <div className="flex justify-between items-center">
-                <span className="text-2xl font-bold text-accent">¥{p.price.toLocaleString()}</span>
-                <span className="text-sm text-gray-400">税込</span>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {filtered.length === 0 && (
-        <p className="text-center text-gray-500 py-12">該当する製品がありません。</p>
-      )}
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <ProductsClient />
+    </>
   );
 }

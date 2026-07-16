@@ -9,3 +9,4 @@ Disallow: /admin/
 Sitemap: https://jp.freshlocksealer.com/sitemap.xml
 
 Host: jp.freshlocksealer.com
+# Build trigger: deploy trigger: SEO+GEO final rebuild

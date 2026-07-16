@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const product = products.find((p) => p.slug === params.slug);
   if (!product) return {};
   const url = `${SITE_URL}/products/${product.slug}`;
-  const title = `${product.name} | FreshLock ハンディ真空ポンプ公式`;
+  const title = product.name;
   const description = product.shortDescription + ` ¥${FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で全国送料無料、30日間返品保証。`;
   return {
     title,
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     alternates: { canonical: `/products/${product.slug}` },
     openGraph: {
       url,
-      title,
+      title: `${product.name} | FreshLock（フレッシュロック）公式`,
       description,
       images: product.images.map((src) => ({
         url: src,

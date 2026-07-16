@@ -4,7 +4,7 @@ export default function AboutPage() {
       <div className="text-center mb-12">
         <h1 className="section-title">FreshLockについて</h1>
         <p className="section-subtitle">
-          「もったいない」をなくしたい。日本の食卓から食品ロスを減らす、それが私たちの想いです。
+          日本の食卓から「もったいない」をなくす。毎日の鮮度を、もっと長く、もっと手軽に。
         </p>
       </div>
 
@@ -12,21 +12,48 @@ export default function AboutPage() {
         <div className="bg-white rounded-xl p-8 shadow-sm mb-8">
           <h2 className="text-2xl font-bold text-primary mb-4">ストーリー</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            FreshLockは、「せっかく買った食材をムダにしたくない」という想いから生まれました。忙しい毎日の中で、新鮮な食材や作り置きのおかずが気づけば傷んでいる——そんな経験は誰にでもあるはずです。
+            「せっかく買ったお肉や野菜をダメにしてしまった」「作り置きがいつの間にか傷んでいた」——そんな毎日の小さな「もったいない」からFreshLockは生まれました。日本の家庭から出る食品ロスは年間約244万トン（令和4年度推計）。その半分近くは家庭から出ていると言われています。
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
-            業務用の真空パック技術を家庭でも手軽に使えるように——と研究を重ね、大きな本体もコードも複雑な操作も不要な、ハンディでコードレスな真空ポンプを開発しました。専用のチャック袋の空気弁に当ててボタンを押すだけ。誰でも、どこでも、すぐに使えます。
+            業務用の真空パック技術を、もっとシンプルに、もっと手軽に家庭で使えたら——。試行錯誤の末にたどり着いたのが、ハンディでコードレスな<strong>ポンプ式の真空保存機</strong>でした。専用の真空チャック袋についた白い空気弁に本体を当て、ボタンを押すだけ。大きな本体も電源コードも必要ありません。
           </p>
           <p className="text-gray-600 leading-relaxed">
-            現在、FreshLockは世界10,000世帯以上で愛用されています。週末に作り置きするご家庭、キャンプやアウトドアで食材を新鮮に保ちたい方、一人暮らしで食品ロスを減らしたい方——FreshLockは、毎日の「もったいない」をなくすお手伝いをします。
+            現在、FreshLockは世界で10,000世帯以上にご愛用いただいています。週末に作り置きをするご家庭、一人暮らしで食材を長持ちさせたい方、キャンプやアウトドアで食材を新鮮に持ち運びたい方——FreshLockは、日本のキッチンに寄り添う「鮮度の相棒」を目指しています。
+          </p>
+        </div>
+
+        <div className="bg-white rounded-xl p-8 shadow-sm mb-8">
+          <h2 className="text-2xl font-bold text-primary mb-4">製品のこだわり</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            FreshLockのハンディ真空ポンプは、毎日キッチンに出しっぱなしにしたくなるデザインと使いやすさを追求しました。
+          </p>
+          <ul className="space-y-2 text-gray-600 list-disc pl-6">
+            <li>
+              <strong>ミルキーホワイトのくびれ円柱ボディ</strong>に、三角キルト（ダイヤ柄）の滑り止め加工。手になじむフィット感です。
+            </li>
+            <li>
+              <strong>シルバーのトップキャップ</strong>に縦に並ぶ3つのワンタッチボタン（吸引・停止・開放）。どのボタンか迷いません。
+            </li>
+            <li>
+              <strong>シルバーリング付きの透明な水滴カップ</strong>。水分や汁気をキャッチしてポンプ本体を守り、丸ごと取り外して洗えます。
+            </li>
+            <li>
+              <strong>USB-C充電式</strong>のコードレス設計。キッチンのどこでもサッと使えます。
+            </li>
+            <li>
+              専用の<strong>クリアなエンボス加工真空チャック袋</strong>は、明るいグリーンのチャックと白い丸い空気弁が目印。くり返し使えて電子レンジ解凍にも対応、食品衛生法に適合しています。
+            </li>
+          </ul>
+          <p className="text-gray-600 leading-relaxed mt-4">
+            <em>※FreshLock本体は空気を吸引する「ポンプ式」の製品です。ヒートバー（熱溶着式）ではありません。専用袋の弁から空気を抜き、チャックで密封する仕組みです。</em>
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           {[
-            { icon: '🌱', title: '食品ロス削減', text: '日本の家庭から出る食品ロスは年間約244万トン（令和4年度推計）。真空保存でその削減に貢献します。' },
-            { icon: '🇯🇵', title: '日本仕様', text: '日本のキッチンや食生活に合わせて設計。コンパクトで使いやすく、専用袋は食品衛生法に適合しています。' },
-            { icon: '♻️', title: 'サステナブル', text: '専用袋は繰り返し使用可能。パッケージはプラスチック削減に取り組んでいます。' },
+            { icon: '🌱', title: '食品ロス削減', text: '真空保存で食材を長持ちさせ、毎日の「もったいない」を減らします。冷凍焼けやにおい移りも防ぎます。' },
+            { icon: '🇯🇵', title: '日本のキッチン仕様', text: 'コンパクトで場所を取らず、日本の食生活に合わせて設計。専用袋は食品衛生法適合です。' },
+            { icon: '♻️', title: 'くり返し使える', text: '専用チャック袋は水洗いして何度も再利用可能。環境にもお財布にもやさしい。' },
           ].map((v) => (
             <div key={v.title} className="bg-white rounded-xl p-6 shadow-sm text-center">
               <div className="text-4xl mb-3">{v.icon}</div>
@@ -45,15 +72,15 @@ export default function AboutPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>
-              <span><strong>全国送料対応</strong> — ¥8,000以上のご注文で全国送料無料。</span>
+              <span><strong>¥8,000以上のご注文で全国送料無料</strong> — 日本国内どこでも送料無料でお届けします。</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>
-              <span><strong>日本語サポート</strong> — メールでのお問い合わせは24時間以内にご返答いたします。</span>
+              <span><strong>日本語メールサポート</strong> — support@freshlocksealer.com までメールをいただければ、平日24時間以内にご返信いたします。</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>
-              <span><strong>安心の品質保証</strong> — 全製品は出荷前に検品済み。本体は1〜2年保証付き。</span>
+              <span><strong>安心の1〜2年メーカー保証</strong> — 全製品は出荷前に検品済み。万が一の不具合にも日本語で丁寧に対応いたします。</span>
             </li>
           </ul>
         </div>

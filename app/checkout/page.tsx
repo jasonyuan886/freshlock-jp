@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/lib/cart-context';
 import { FREE_SHIPPING_THRESHOLD, SHIPPING_FEE } from '@/lib/data';
+import Image from 'next/image';
 
 const prefectures = [
   '北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県',
@@ -330,11 +331,12 @@ export default function CheckoutPage() {
               <div className="space-y-3 mb-4">
                 {items.map((item) => (
                   <div key={item.product.slug} className="flex gap-3">
-                    <img
-                      src={item.product.image}
-                      alt={item.product.name}
+                    <Image src={item.product.image}
+                      alt={`${item.product.name} — FreshLock（フレッシュロック）`}
                       className="w-14 h-14 rounded-lg object-cover"
-                    />
+                      width={56}
+                      height={56}
+                      loading="lazy" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-gray-900 truncate">{item.product.name}</p>
                       <p className="text-xs text-gray-500">数量：{item.quantity}</p>

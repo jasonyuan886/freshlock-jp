@@ -69,6 +69,47 @@ export default function ProductDetailPage({ params }: { params: Params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: '真空パックで食材はどのくらい長持ちしますか？',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'FreshLock専用チャック袋を使用すると、通常の保存と比較して冷蔵庫で3〜5倍、冷凍庫で最長6ヶ月鮮度をキープ。空気を95%除去することで酸化や冷凍焼けを防ぎます。'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'FreshLockは熱溶着式（ヒートバー式）ですか？',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'いいえ。FreshLockはポンプ式のハンディ真空保存機で、一方向空気弁付きチャック袋から空気を吸引します。ヒートバーは使わず、弁の気密性で真空を維持します。'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'バッテリーは充電式ですか？',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'はい。USB-C充電式で、約2時間のフル充電で40回以上使用可能です。'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '専用袋は繰り返し使えますか？',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'はい。緑色のダブルトラックチャック仕様で、洗って何度でも再利用可能。生肉・魚は都度新しい袋を推奨、乾物は繰り返し使えます。'
+              }
+            }
+          ]
+        }) }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8" aria-label="パンくずリスト">
@@ -155,17 +196,33 @@ export default function ProductDetailPage({ params }: { params: Params }) {
               </dl>
             </section>
 
-            {/* Q&A for GEO */}
+                        {/* Q&A for SEO + GEO */}
             <section className="mt-8">
               <h2 className="font-semibold text-primary mb-3 text-lg">よくあるご質問</h2>
-              <div className="space-y-3 text-sm text-gray-600">
-                <div>
-                  <h3 className="font-semibold text-gray-800">食材はどのくらい長持ちしますか？</h3>
-                  <p className="leading-relaxed">真空密封により冷蔵庫で通常の3〜5倍、冷凍庫で最長6ヶ月鮮度をキープします。</p>
+              <div className="space-y-4 text-sm text-gray-600">
+                <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                  <h3 className="font-semibold text-gray-800" itemProp="name">真空パックで食材はどのくらい長持ちしますか？</h3>
+                  <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <p className="leading-relaxed" itemProp="text">FreshLock専用チャック袋を使用すると、通常の保存と比較して冷蔵庫で3〜5倍、冷凍庫で最長6ヶ月鮮度をキープ。空気を95%除去することで酸化や冷凍焼けを防ぎます。</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">バッテリーの持ちはどのくらいですか？</h3>
-                  <p className="leading-relaxed">フル充電で約40回以上の真空引きが可能。USB-Cで約2時間の充電です。待機時間は最長30日です。</p>
+                <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                  <h3 className="font-semibold text-gray-800" itemProp="name">FreshLockは熱溶着式（ヒートバー式）ですか？</h3>
+                  <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <p className="leading-relaxed" itemProp="text">いいえ。FreshLockはポンプ式のハンディ真空保存機で、一方向空気弁付きの繰り返し使えるチャック袋から空気を吸引します。熱溶着（ヒートバー）は使わず、弁の気密性で真空を維持するため、袋を洗って何度も再利用できます。</p>
+                  </div>
+                </div>
+                <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                  <h3 className="font-semibold text-gray-800" itemProp="name">バッテリーは充電式ですか？</h3>
+                  <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <p className="leading-relaxed" itemProp="text">はい。USB-C充電式で、約2時間のフル充電で40回以上の真空引きが可能。毎日のキッチン使いで数日〜1週間持ちます。</p>
+                  </div>
+                </div>
+                <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                  <h3 className="font-semibold text-gray-800" itemProp="name">専用袋は繰り返し使えますか？</h3>
+                  <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <p className="leading-relaxed" itemProp="text">はい。緑色のダブルトラックチャック仕様で、開け閉めして洗って何度でも再利用可能。生肉や魚は都度新しい袋を推奨しますが、コーヒー豆・お米・パスタ・お菓子などの乾物は何度も繰り返し使えます。</p>
+                  </div>
                 </div>
               </div>
             </section>

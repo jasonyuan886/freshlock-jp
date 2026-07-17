@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getAllPosts, getPostBySlug } from '@/lib/blog';
+import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/blog';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: post.title,
+    title: `${post.title} | FreshLock（フレッシュロック）`,
     description: post.description,
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
@@ -35,6 +35,8 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const relatedPosts = getRelatedPosts(slug, 3);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -44,7 +46,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     author: { '@type': 'Organization', name: post.author },
     publisher: {
       '@type': 'Organization',
-      name: 'FreshLock',
+      name: 'FreshLock Japan',
       url: 'https://jp.freshlocksealer.com',
     },
     mainEntityOfPage: `https://jp.freshlocksealer.com/blog/${slug}`,
@@ -107,6 +109,31 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </div>
       </article>
+
+      {relatedPosts.length > 0 && (
+        <section className="bg-gray-50 py-16" aria-labelledby="related-heading">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="related-heading" className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              関連記事
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {relatedPosts.map(rp => (
+                <Link
+                  key={rp.slug}
+                  href={`/blog/${rp.slug}`}
+                  className="group bg-white rounded-xl p-5 shadow-sm hover:shadow-lg transition"
+                >
+                  <h3 className="font-bold text-gray-900 group-hover:text-primary-600 transition mb-2">
+                    {rp.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-2 line-clamp-2">{rp.description}</p>
+                  <p className="text-xs text-gray-400">{rp.readingTime}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

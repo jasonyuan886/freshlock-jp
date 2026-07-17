@@ -2,12 +2,40 @@
 
 import { useState } from 'react';
 
-export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+type Status = 'idle' | 'submitting' | 'success' | 'error';
 
-  const handleSubmit = (e: React.FormEvent) => {
+export default function ContactPage() {
+  const [status, setStatus] = useState<Status>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus('submitting');
+    setErrorMsg('');
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value.trim(),
+      email: (form.elements.namedItem('email') as HTMLInputElement).value.trim(),
+      subject: (form.elements.namedItem('subject') as HTMLSelectElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim(),
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `送信に失敗しました (${res.status})`);
+      }
+      setStatus('success');
+    } catch (err: any) {
+      setErrorMsg(err.message || '送信に失敗しました。しばらくしてからもう一度お試しください。');
+      setStatus('error');
+    }
   };
 
   return (
@@ -20,35 +48,41 @@ export default function ContactPage() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-12">
-        {/* Form */}
         <div className="bg-white rounded-xl p-8 shadow-sm">
-          {submitted ? (
+          {status === 'success' ? (
             <div className="text-center py-12">
               <div className="text-5xl mb-4">✅</div>
               <h2 className="text-2xl font-bold text-primary mb-2">送信完了しました</h2>
               <p className="text-gray-500">お問い合わせありがとうございます。担当者より折り返しご連絡いたします。</p>
+              <button
+                onClick={() => { setStatus('idle'); setErrorMsg(''); }}
+                className="mt-6 text-sm text-accent hover:underline"
+              >
+                別のメッセージを送信する
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">お名前</label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">お名前</label>
                 <input
-                  type="text"
-                  required
+                  id="name" name="name" type="text" required maxLength={100}
                   className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">メールアドレス</label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">メールアドレス</label>
                 <input
-                  type="email"
-                  required
+                  id="email" name="email" type="email" required maxLength={200}
                   className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">お問い合わせ種別</label>
-                <select className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">お問い合わせ種別</label>
+                <select
+                  id="subject" name="subject" required
+                  className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white"
+                >
                   <option>一般的なご質問</option>
                   <option>ご注文について</option>
                   <option>返品・交換について</option>
@@ -57,21 +91,30 @@ export default function ContactPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">メッセージ</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">メッセージ</label>
                 <textarea
-                  required
-                  rows={5}
+                  id="message" name="message" required rows={5} maxLength={5000}
                   className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none"
                 />
               </div>
-              <button type="submit" className="btn-primary w-full">
-                送信する
+
+              {status === 'error' && (
+                <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
+                  {errorMsg}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {status === 'submitting' ? '送信中…' : '送信する'}
               </button>
             </form>
           )}
         </div>
 
-        {/* Info */}
         <div className="space-y-8">
           <div>
             <h2 className="text-xl font-bold text-primary mb-4">お問い合わせ先</h2>

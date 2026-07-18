@@ -33,7 +33,7 @@ function Hero() {
             </div>
           </div>
           <div className="flex justify-center md:justify-center mt-8 md:mt-0">
-            <Image src="/images/products/sealer-main.jpg"
+            <Image src="/images/products/sealer-main.png"
               alt="FreshLock Pro ハンディ真空ポンプ パールホワイト シルバートップ グリーンジッパーの専用袋付き"
               className="rounded-2xl shadow-2xl w-64 md:w-full max-w-md md:max-w-none"
               width={600}

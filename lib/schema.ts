@@ -63,17 +63,19 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org/',
     '@type': 'Organization',
-    name: 'FreshLock Japan',
+    name: 'FreshLock',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
     description:
-      'FreshLock（フレッシュロック）は、片手で使えるコードレス式ハンディ真空ポンプ。食材の鮮度を最大5倍長持ちさせ、日本全国1万世帯以上でご愛用いただいています。',
+      'FreshLock（フレッシュロック）は、片手で使えるコードレス式ハンディ真空ポンプ。食材の鮮度を最大5倍長持ちさせ、世界中のキッチンでご愛用いただいています。日本のお客様向けにJPY表記・日本語サポートをご提供しています。',
     email: 'support@freshlocksealer.com',
+    areaServed: ['JP'],
     contactPoint: {
       '@type': 'ContactPoint',
       email: 'support@freshlocksealer.com',
       contactType: 'customer support',
       availableLanguage: ['Japanese', 'English'],
+      areaServed: ['JP'],
     },
   };
 }
@@ -82,7 +84,7 @@ export function generateWebsiteSchema() {
   return {
     '@context': 'https://schema.org/',
     '@type': 'WebSite',
-    name: 'FreshLock Japan',
+    name: 'FreshLock',
     url: SITE_URL,
     potentialAction: {
       '@type': 'SearchAction',

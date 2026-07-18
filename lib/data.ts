@@ -202,7 +202,7 @@ export const faqs = [
   {
     question: '送料はいくらですか？',
     answer:
-      `全国一律${SHIPPING_FEE}円（税込）。${FREE_SHIPPING_THRESHOLD}円以上のご注文で送料無料となります。配送は日本郵便または佐川急便にて、ご注文確定後1〜3営業日以内に発送いたします。`,
+      `全国一律${SHIPPING_FEE}円（税込）。${FREE_SHIPPING_THRESHOLD}円以上のご注文で送料無料となります。国際配送にてご注文確定後5〜12営業日以内に発送いたします。`,
   },
   {
     question: '返品・交換はできますか？',

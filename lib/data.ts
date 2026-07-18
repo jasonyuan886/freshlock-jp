@@ -2,10 +2,10 @@ import { Product, Review } from './types';
 
 // 日本市場向け製品データ — FreshLock Japan
 // 価格は日本円（税込）、8エンド価格帯（日本のEC慣習）
-// 送料無料閾値：¥8,000
+// 送料無料閾値：¥12,000
 
-export const FREE_SHIPPING_THRESHOLD = 8000;
-export const SHIPPING_FEE = 680;
+export const FREE_SHIPPING_THRESHOLD = 12000;
+export const SHIPPING_FEE = 1200;
 
 export const products: Product[] = [
   {
@@ -202,7 +202,7 @@ export const faqs = [
   {
     question: '送料はいくらですか？',
     answer:
-      `全国一律${SHIPPING_FEE}円（税込）。${FREE_SHIPPING_THRESHOLD}円以上のご注文で送料無料となります。国際配送にてご注文確定後5〜12営業日以内に発送いたします。`,
+      `全国一律${SHIPPING_FEE}円（税込・通常配送5-8営業日）。${FREE_SHIPPING_THRESHOLD}円以上のご注文で通常配送が送料無料。速達配送（2-4営業日）は別途¥800（¥12,000以上）または¥2,000（¥12,000未満）。国際航空便（リチウム電池対応）にて中国深センより発送いたします。`,
   },
   {
     question: '返品・交換はできますか？',

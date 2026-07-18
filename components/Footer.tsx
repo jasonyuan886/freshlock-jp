@@ -102,8 +102,8 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-300">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; {new Date().getFullYear()} FreshLock Japan. All rights reserved.</p>
-            <p className="mt-2 md:mt-0">日本国内発送・30日間返品保証</p>
+            <p>&copy; {new Date().getFullYear()} FreshLock. All rights reserved.</p>
+            <p className="mt-2 md:mt-0">日本へ国際配送・30日間返品保証</p>
           </div>
         </div>
       </div>

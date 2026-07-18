@@ -15,9 +15,9 @@ export const products: Product[] = [
     description:
       'FreshLock Proは、コードレスでワンタッチ操作が可能なハンディ真空ポンプ式保存機です。付属の専用チャック袋にある白色の空気弁にノズルを当て、ボタンを押すだけ。強力モーターが数秒で空気を抜き取り、片一方向弁が自動ロックして密封状態をキープ。食材の鮮度を最大5倍長持ちさせます。ヒートバー（熱溶着）は不要、複雑な設定もありません。USB-C充電式で完全ポータブル。キッチン、冷蔵庫、パントリーでの日常使いはもちろん、BBQなどアウトドアシーンでも活躍します。',
     shortDescription: '強力ハンディ真空ポンプ — コードレス・USB-C充電・ワンタッチ弁式密封。',
-    image: '/images/products/sealer-main.png',
+    image: '/images/products/sealer-main.jpg',
     images: [
-      '/images/products/sealer-main.png',
+      '/images/products/sealer-main.jpg',
       '/images/products/sealer-use.jpg',
       '/images/products/sealer-kit.jpg',
     ],

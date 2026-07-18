@@ -127,11 +127,10 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-2xl">📞</span>
+                <span className="text-2xl">⏱️</span>
                 <div>
-                  <p className="font-medium">電話</p>
-                  <p className="text-gray-600">050-1234-5678</p>
-                  <p className="text-sm text-gray-400">平日 10:00〜17:00（日本時間）</p>
+                  <p className="font-medium">対応時間</p>
+                  <p className="text-gray-600">24時間以内にご返信（年中無休）</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

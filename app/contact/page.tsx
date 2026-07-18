@@ -130,7 +130,7 @@ export default function ContactPage() {
                 <span className="text-2xl">⏱️</span>
                 <div>
                   <p className="font-medium">対応時間</p>
-                  <p className="text-gray-600">24時間以内にご返信（年中無休）</p>
+                  <p className="text-gray-600">24時間以内にご返信（年中無休）<br />日本時間（JST）の営業時間帯を優先して対応いたします</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

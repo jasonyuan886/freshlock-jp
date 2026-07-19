@@ -1,3 +1,12 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '返品・交換ポリシー',
+  description:
+    'FreshLockの返品・交換ポリシー。30日間返品保証、未使用品の全額返金・交換についてご案内します。',
+  alternates: { canonical: '/returns' },
+};
+
 export default function ReturnsPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

@@ -22,11 +22,10 @@ export const metadata: Metadata = {
     '真空パック機,ハンディ真空ポンプ,真空保存機,コードレス真空パック,食品真空保存,真空チャック袋,繰り返し使える保存袋,食品保存,作り置き,食品ロス削減,FreshLock,フレッシュロック,キッチン家電',
   applicationName: siteName,
   icons: {
-    icon: '/logo.svg',
+    icon: [{ url: '/favicon.ico', sizes: '32x32' }, { url: '/logo.svg', type: 'image/svg+xml' }],
     apple: '/logo.svg',
   },
   alternates: {
-    canonical: '/',
     languages: {
       'ja': 'https://jp.freshlocksealer.com',
       'en': 'https://www.freshlocksealer.com',

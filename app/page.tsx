@@ -1,3 +1,9 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
+
 import Link from 'next/link';
 import { products, reviews, faqs, FREE_SHIPPING_THRESHOLD } from '@/lib/data';
 import { getAllPosts } from '@/lib/blog';

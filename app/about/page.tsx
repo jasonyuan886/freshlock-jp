@@ -1,3 +1,12 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'FreshLockについて',
+  description:
+    'FreshLock（フレッシュロック）のブランドストーリー。ハンディ真空ポンプで食品ロスを削減し、食材の鮮度を5倍長持ちさせるミッションについてご紹介します。',
+  alternates: { canonical: '/about' },
+};
+
 export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '送料・配送について | FreshLock Japan',
+  title: { absolute: '送料・配送について | FreshLock（フレッシュロック）公式' },
   description: 'FreshLock日本の配送ポリシー。¥12,000以上で全国送料無料（通常配送）。中国深センより国際航空便で発送、リチウム電池対応。',
+  alternates: { canonical: '/shipping' },
 };
 
 export default function ShippingPage() {

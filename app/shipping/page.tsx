@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: { absolute: '送料・配送について | FreshLock（フレッシュロック）公式' },
-  description: 'FreshLock日本の配送ポリシー。¥12,000以上で全国送料無料（通常配送）。中国深センより国際航空便で発送、リチウム電池対応。',
+  description: 'FreshLock日本の配送ポリシー。¥5,000以上のご注文で国際航空便（追跡あり）送料無料。中国深センより発送、リチウム電池対応。',
   alternates: { canonical: '/shipping' },
 };
 
@@ -46,19 +46,19 @@ export default function ShippingPage() {
             </thead>
             <tbody>
               <tr>
-                <td className="border border-gray-300 px-4 py-2"><strong>通常配送（佐川国際小包）</strong></td>
-                <td className="border border-gray-300 px-4 py-2">5〜8営業日</td>
+                <td className="border border-gray-300 px-4 py-2"><strong>国際航空便（追跡あり）</strong></td>
+                <td className="border border-gray-300 px-4 py-2">7〜12営業日</td>
                 <td className="border border-gray-300 px-4 py-2">
-                  <strong>¥12,000以上で無料</strong><br />
-                  ¥12,000未満は全国一律¥1,200
+                  <strong>¥5,000以上で無料</strong><br />
+                  ¥5,000未満は全国一律¥800
                 </td>
               </tr>
               <tr>
-                <td className="border border-gray-300 px-4 py-2"><strong>速達配送（DHL/FedEx）</strong></td>
+                <td className="border border-gray-300 px-4 py-2"><strong>速達配送（DHL 国際エクスプレス）</strong></td>
                 <td className="border border-gray-300 px-4 py-2">2〜4営業日</td>
                 <td className="border border-gray-300 px-4 py-2">
-                  ¥12,000未満：¥2,000<br />
-                  ¥12,000以上：¥800
+                  ¥5,000未満：¥1,500<br />
+                  ¥5,000以上：¥800
                 </td>
               </tr>
             </tbody>
@@ -72,13 +72,13 @@ export default function ShippingPage() {
 
         <div className="bg-accent/10 border-l-4 border-accent p-4 rounded-r-lg my-6">
           <p className="text-sm text-gray-700 m-0">
-            <strong>💡 ひとことアドバイス：</strong>真空パック機本体（¥8,980）に専用袋30枚（¥1,980）を追加すると、合計¥10,960。スターターキット（本体+30枚セット ¥12,800）なら、通常配送が<strong>自動的に無料</strong>になります。
+            <strong>💡 ひとことアドバイス：</strong>真空パック機本体（¥8,980）は単品でも<strong>自動的に送料無料</strong>（¥5,000以上）になります。袋も一緒に揃えたい方は「Pro+50枚セット」やスターターキット（本体+30枚セット）がおすすめです。
           </p>
         </div>
 
         <h2>送料無料について</h2>
         <p>
-          商品合計金額（税込）が<strong>¥12,000以上</strong>の場合、通常配送の送料が<strong>無料</strong>となります（クーポン割引前の小計金額で計算）。送料無料はチェックアウト時に自動適用されます—クーポンコードは不要です。
+          商品合計金額（税込）が<strong>¥5,000以上</strong>の場合、国際航空便（追跡あり）の送料が<strong>無料</strong>となります（クーポン割引前の小計金額で計算）。送料無料はチェックアウト時に自動適用されます—クーポンコードは不要です。
         </p>
 
         <h2>追跡番号について</h2>

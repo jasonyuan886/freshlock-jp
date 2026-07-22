@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { products, reviews, FREE_SHIPPING_THRESHOLD } from '@/lib/data';
 import { generateProductSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/schema';
 import AddToCartClient from './AddToCartClient';
+import BundleAddons from './BundleAddons';
 import ProductGallery from './ProductGallery';
 import Image from 'next/image';
 
@@ -17,8 +18,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const product = products.find((p) => p.slug === params.slug);
   if (!product) return {};
   const url = `${SITE_URL}/products/${product.slug}`;
-  const title = product.name;
-  const description = product.shortDescription + ` ¥${FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で全国送料無料、30日間返品保証。`;
+  const seoTitles: Record<string, string> = {
+    'freshlock-pro': 'FreshLock Pro（フレッシュロック プロ）｜液体・煮汁・魚のドリップも吸えるハンディ真空パック機',
+    'freshlock-starter-kit': 'FreshLock スターターキット｜ハンディ真空パック機 Pro + 専用袋30枚セット',
+    'vacuum-seal-bags-30-pack': 'FreshLock 真空チャック袋30枚（中サイズ）｜繰り返し使える BPAフリー',
+    'vacuum-seal-bags-50-pack': 'FreshLock 真空チャック袋50枚（大サイズ）｜まとめ買い・家族分・低温調理に',
+  };
+  const title = seoTitles[product.slug] || product.name;
+  const description = product.shortDescription + ` ¥${FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で国際航空便（追跡あり）送料無料、30日間返品保証。`;
   return {
     title,
     description,
@@ -47,9 +54,18 @@ export default function ProductDetailPage({ params }: { params: Params }) {
   const product = products.find((p) => p.slug === params.slug);
   if (!product) return notFound();
 
-  const related = products
-    .filter((p) => p.slug !== product.slug && p.category === product.category)
-    .slice(0, 2);
+  // クロスセル最適化：本体→袋、袋→本体+他の袋
+  let related;
+  if (product.slug === 'freshlock-pro') {
+    related = products.filter((p) => p.category === 'bags');
+  } else if (product.category === 'bags') {
+    const sealer = products.find((x) => x.slug === 'freshlock-pro');
+    const otherBag = products.find((x) => x.category === 'bags' && x.slug !== product.slug);
+    related = [sealer, otherBag].filter(Boolean) as typeof products;
+  } else {
+    related = products.filter((x) => x.slug !== product.slug && x.category === product.category).slice(0, 2);
+  }
+  const relatedHeading = product.slug === 'freshlock-pro' ? 'セットで揃える' : 'こちらもおすすめ';
 
   const formatPrice = (price: number) => `¥${price.toLocaleString()}`;
 
@@ -163,6 +179,8 @@ export default function ProductDetailPage({ params }: { params: Params }) {
 
             <AddToCartClient product={product} />
 
+            <BundleAddons product={product} />
+
             {/* Specs */}
             <section className="bg-gray-50 rounded-xl p-6 mt-6">
               <h2 className="font-semibold text-primary mb-3 text-lg">仕様</h2>
@@ -208,18 +226,27 @@ export default function ProductDetailPage({ params }: { params: Params }) {
             </section>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-500" aria-label="安心の保証">
-              <span>🚚 全国一律送料¥680（¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で無料）</span>
-              <span>↩️ 30日間返品保証</span>
-              <span>🔒 安全なお支払い</span>
+            <div className="mt-6 space-y-2" aria-label="安心の保証">
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-700 rounded-full px-3 py-1.5 text-sm">🚚 追跡可能配送 7–12日</span>
+                <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-700 rounded-full px-3 py-1.5 text-sm">🔒 安全決済</span>
+                <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-700 rounded-full px-3 py-1.5 text-sm">↩️ 30日間返品保証</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-500 rounded-full px-3 py-1.5 text-xs">💳 Apple Pay</span>
+                <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-500 rounded-full px-3 py-1.5 text-xs">Google Pay</span>
+                <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-500 rounded-full px-3 py-1.5 text-xs">VISA</span>
+                <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-500 rounded-full px-3 py-1.5 text-xs">Mastercard</span>
+                <span className="inline-flex items-center gap-1 bg-gray-50 text-gray-400 rounded-full px-3 py-1.5 text-xs">PayPay 近日対応</span>
+              </div>
             </div>
           </section>
         </article>
 
         {/* Related */}
         {related.length > 0 && (
-          <section className="mt-20" aria-labelledby="related-heading">
-            <h2 id="related-heading" className="section-title mb-8">関連製品</h2>
+          <section className="mt-12 sm:mt-20" aria-labelledby="related-heading">
+            <h2 id="related-heading" className="section-title mb-8">{relatedHeading}</h2>
             <div className="grid sm:grid-cols-2 gap-8">
               {related.map((p) => (
                 <Link
@@ -229,13 +256,13 @@ export default function ProductDetailPage({ params }: { params: Params }) {
                 >
                   <Image src={p.image}
                     alt={`${p.name} - ${p.shortDescription}`}
-                    className="w-32 h-32 object-cover"
+                    className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-l-xl flex-shrink-0"
                     width={128}
                     height={128}
                     loading="lazy" />
-                  <div className="p-4">
-                    <h3 className="font-bold text-primary mb-1">{p.name}</h3>
-                    <p className="text-accent font-bold">¥{p.price.toLocaleString()}（税込）</p>
+                  <div className="p-3 sm:p-4 flex-1 min-w-0">
+                    <h3 className="font-bold text-primary mb-1 text-sm sm:text-base leading-snug line-clamp-2">{p.name}</h3>
+                    <p className="text-accent font-bold">{formatPrice(p.price)}（税込）</p>
                   </div>
                 </Link>
               ))}

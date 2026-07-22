@@ -47,6 +47,17 @@ function Hero() {
                 詳しく見る
               </Link>
             </div>
+            <div className="mt-5 flex flex-wrap gap-2 sm:gap-2.5 text-sm" aria-label="配送・返品について">
+              <span className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur text-white rounded-full px-3.5 py-1.5">
+                <span aria-hidden="true">🚚</span> 5,000円以上で送料無料
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur text-white rounded-full px-3.5 py-1.5">
+                <span aria-hidden="true">📦</span> 国際航空便 7–12日でお届け
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur text-white rounded-full px-3.5 py-1.5">
+                <span aria-hidden="true">↩️</span> 30日間返品保証
+              </span>
+            </div>
           </div>
           <div className="flex justify-center mt-6 sm:mt-8 md:mt-0">
             <Image src="/images/products/sealer-main.jpg"
@@ -198,7 +209,7 @@ function SocialProof() {
           {[
             ['10,000+', '世界のご愛用世帯'],
             ['4.8 ★', '平均レビュー評価'],
-            ['全国', `¥${FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で送料無料`],
+            ['送料無料', `¥${FREE_SHIPPING_THRESHOLD.toLocaleString()}以上・国際航空便`],
             ['30日間', '返金保証'],
           ].map(([stat, label]) => (
             <div key={label as string}>
@@ -363,7 +374,7 @@ function Cta() {
           液体も魚も真空できるハンディ真空パック機
         </h2>
         <p className="text-gray-300 mb-8 text-base sm:text-lg leading-relaxed">
-          世界10,000世帯以上が愛用。¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上のご注文で日本全国送料無料（国際航空便・追跡あり）。30日間返金保証。
+          世界10,000世帯以上が愛用。¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上のご注文で国際航空便（追跡あり）の送料が無料に。7〜12日で日本へお届け、30日間返品保証。
         </p>
         <Link href="/products" className="btn-primary text-base sm:text-lg w-full sm:w-auto px-8">
           FreshLockを今すぐチェック

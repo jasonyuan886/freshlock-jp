@@ -3,8 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/lib/cart-context';
-import { FREE_SHIPPING_THRESHOLD } from '@/lib/data';
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_FEE } from '@/lib/data';
 import Image from 'next/image';
+
+const STANDARD_FEE = 800;
+const EXPRESS_FEE = 1500;
+const EXPRESS_UPGRADE = 800;
 
 const prefectures = [
   '北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県',
@@ -54,11 +58,8 @@ export default function CheckoutPage() {
         if (data.url) { window.location.href = data.url; }
         else if (data.error) { setError(data.error); setProcessing(false); }
         else { alert('⚠️ 現在決済システム準備中です。デモモードにてご注文を送信しました。'); clearCart(); setProcessing(false); }
-      } else if (paymentMethod === 'paypal') {
-        alert('⚠️ PayPalは現在準備中です。クレジットカード決済をご利用ください。');
-        setProcessing(false);
-      } else if (paymentMethod === 'cod') {
-        alert('⚠️ 代金引換は現在準備中です。');
+      } else if (paymentMethod === 'paypay') {
+        alert('⚠️ PayPayは近日対応予定です。クレジットカード/Apple Pay/Google Pay決済をご利用ください。');
         setProcessing(false);
       }
     } catch (err: any) {
@@ -94,22 +95,22 @@ export default function CheckoutPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">姓</label>
                   <input type="text" name="lastName" value={form.lastName} onChange={handleChange} required placeholder="山田"
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" />
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none bg-white" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">名</label>
                   <input type="text" name="firstName" value={form.firstName} onChange={handleChange} required placeholder="太郎"
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" />
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none bg-white" />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">メールアドレス</label>
                   <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="example@email.com"
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" />
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none bg-white" />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">電話番号</label>
                   <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="090-1234-5678"
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" />
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none bg-white" />
                 </div>
               </div>
             </div>
@@ -121,12 +122,12 @@ export default function CheckoutPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">郵便番号</label>
                   <input type="text" name="postal" value={form.postal} onChange={handleChange} required maxLength={8} placeholder="123-4567"
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" />
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none bg-white" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">都道府県</label>
                   <select name="prefecture" value={form.prefecture} onChange={handleChange} required
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white">
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white appearance-none">
                     <option value="">選択してください</option>
                     {prefectures.map(p => <option key={p} value={p}>{p}</option>)}
                   </select>
@@ -134,17 +135,17 @@ export default function CheckoutPage() {
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">市区町村</label>
                   <input type="text" name="city" value={form.city} onChange={handleChange} required placeholder="渋谷区渋谷"
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" />
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none bg-white" />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">町名・番地</label>
                   <input type="text" name="address1" value={form.address1} onChange={handleChange} required placeholder="1-2-3"
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" />
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none bg-white" />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">建物名・部屋番号（任意）</label>
                   <input type="text" name="address2" value={form.address2} onChange={handleChange} placeholder="○○マンション 101号室"
-                    className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" />
+                    className="w-full border rounded-lg px-4 py-2.5 min-h-[44px] text-base focus:ring-2 focus:ring-primary focus:border-transparent outline-none appearance-none bg-white" />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">国</label>
@@ -157,22 +158,22 @@ export default function CheckoutPage() {
             <div className="bg-white rounded-xl p-6 shadow">
               <h2 className="font-bold text-primary text-lg mb-4">配送方法</h2>
               <div className="space-y-3">
-                <label className={`flex items-start gap-3 p-4 border rounded-lg cursor-pointer transition ${shippingMethod === 'standard' ? 'border-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                <label className={`flex items-start gap-3 p-3 sm:p-4 border rounded-lg cursor-pointer transition min-h-[44px] ${shippingMethod === 'standard' ? 'border-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}>
                   <input type="radio" name="shipmethod" checked={shippingMethod === 'standard'} onChange={() => setShippingMethod('standard')} className="mt-1 accent-primary" />
                   <div className="flex-1">
                     <div className="flex justify-between items-center">
-                      <span className="font-semibold">通常配送（佐川急便）</span>
-                      <span className="font-semibold">{totalPrice >= FREE_SHIPPING_THRESHOLD ? <span className="text-accent">無料</span> : '¥1,200'}</span>
+                      <span className="font-semibold">国際航空便（追跡あり）</span>
+                      <span className="font-semibold">{totalPrice >= FREE_SHIPPING_THRESHOLD ? <span className="text-accent">無料</span> : '¥800'}</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-0.5">5–8営業日 · 中国深センより航空便</p>
+                    <p className="text-xs text-gray-500 mt-0.5">7–12営業日 · 中国深センより国際航空便で発送（リチウム電池対応）</p>
                   </div>
                 </label>
-                <label className={`flex items-start gap-3 p-4 border rounded-lg cursor-pointer transition ${shippingMethod === 'express' ? 'border-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}>
+                <label className={`flex items-start gap-3 p-3 sm:p-4 border rounded-lg cursor-pointer transition min-h-[44px] ${shippingMethod === 'express' ? 'border-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}>
                   <input type="radio" name="shipmethod" checked={shippingMethod === 'express'} onChange={() => setShippingMethod('express')} className="mt-1 accent-primary" />
                   <div className="flex-1">
                     <div className="flex justify-between items-center">
-                      <span className="font-semibold">速達配送（DHL）</span>
-                      <span className="font-semibold">{totalPrice >= FREE_SHIPPING_THRESHOLD ? '¥800' : '¥2,000'}</span>
+                      <span className="font-semibold">速達配送（DHL 国際エクスプレス）</span>
+                      <span className="font-semibold">{totalPrice >= FREE_SHIPPING_THRESHOLD ? '¥800' : '¥1,500'}</span>
                     </div>
                     <p className="text-xs text-gray-500 mt-0.5">2–4営業日 · DHLエクスプレス</p>
                   </div>
@@ -186,20 +187,21 @@ export default function CheckoutPage() {
             </div>
 
             {/* Payment */}
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h2 className="font-bold text-primary text-lg mb-4">お支払い方法</h2>
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow">
+              <h2 className="font-bold text-primary text-lg mb-2">お支払い方法</h2>
+              <p className="text-xs text-gray-500 mb-3">Apple Pay・Google Pay・VISA・Mastercard、主要クレジットカードに対応。PayPay は近日対応予定です。</p>
               <div className="space-y-3">
-                <label className={`flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition ${paymentMethod === 'stripe' ? 'border-primary bg-primary/5' : 'hover:bg-gray-50'}`}>
+                <label className={`flex items-center gap-3 p-3 sm:p-4 border rounded-lg cursor-pointer transition min-h-[44px] ${paymentMethod === 'stripe' ? 'border-primary bg-primary/5' : 'hover:bg-gray-50'}`}>
                   <input type="radio" name="payment" value="stripe" checked={paymentMethod === 'stripe'} onChange={(e) => setPaymentMethod(e.target.value)} className="accent-primary" />
                   <div>
-                    <span className="font-medium">💳 クレジットカード / デビットカード</span>
+                    <span className="font-medium">💳 クレジットカード / デビットカード / Apple Pay / Google Pay</span>
                     <p className="text-xs text-gray-500 mt-0.5">Visa・Mastercard・Amex — Stripeによる安全な決済</p>
                   </div>
                 </label>
-                <label className={`flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition opacity-50 ${paymentMethod === 'paypal' ? 'border-primary bg-primary/5' : ''}`}>
-                  <input type="radio" name="payment" value="paypal" checked={paymentMethod === 'paypal'} onChange={(e) => setPaymentMethod(e.target.value)} className="accent-primary" disabled />
+                <label className={`flex items-center gap-3 p-3 sm:p-4 border rounded-lg cursor-pointer transition min-h-[44px] opacity-50 ${paymentMethod === 'paypay' ? 'border-primary bg-primary/5' : ''}`}>
+                  <input type="radio" name="payment" value="paypay" checked={paymentMethod === 'paypay'} onChange={(e) => setPaymentMethod(e.target.value)} className="accent-primary" disabled />
                   <div>
-                    <span className="font-medium">🅿️ PayPal（準備中）</span>
+                    <span className="font-medium">🅿️ PayPay（近日対応）</span>
                     <p className="text-xs text-gray-500 mt-0.5">まもなくご利用いただけます</p>
                   </div>
                 </label>
@@ -241,14 +243,14 @@ export default function CheckoutPage() {
                   </div>
                 )}
                 {totalPrice < FREE_SHIPPING_THRESHOLD && (
-                  <p className="text-xs text-gray-400">あと{formatPrice(FREE_SHIPPING_THRESHOLD - totalPrice)}で通常配送送料無料！</p>
+                  <p className="text-xs text-accent font-medium">あと{formatPrice(FREE_SHIPPING_THRESHOLD - totalPrice)}で国際航空便が送料無料に！</p>
                 )}
               </div>
               <div className="border-t mt-4 pt-4 flex justify-between font-bold text-lg">
                 <span>合計</span><span>{formatPrice(total)}（税込）</span>
               </div>
               <button type="submit" disabled={processing}
-                className="btn-primary w-full mt-6 disabled:opacity-50 disabled:cursor-not-allowed">
+                className="btn-primary w-full mt-6 disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]">
                 {processing ? (
                   <span className="flex items-center justify-center gap-2">
                     <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">

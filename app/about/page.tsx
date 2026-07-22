@@ -81,7 +81,7 @@ export default function AboutPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>
-              <span><strong>¥12,000以上のご注文で全国送料無料（通常配送）</strong> — 速達配送（2-4営業日）も選択可。北海道・沖縄は+¥500追加。</span>
+              <span><strong>¥5,000以上のご注文で国際航空便（追跡あり）送料無料</strong> — 速達配送（DHL、2-4営業日）も選択可。北海道・沖縄・離島は+¥500の遠隔地追加料金がかかる場合があります。</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>

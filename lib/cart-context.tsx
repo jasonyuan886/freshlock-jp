@@ -18,10 +18,10 @@ interface CartContextType {
   getShippingCost: () => number;
 }
 
-// Japan shipping rules (JPY)
-const FREE_SHIPPING_THRESHOLD = 12000;
-const STANDARD_SHIPPING = 1200;
-const EXPRESS_SHIPPING = 2000;
+// Japan shipping rules (JPY) - 国際航空便（追跡あり）
+const FREE_SHIPPING_THRESHOLD = 5000;
+const STANDARD_SHIPPING = 800;
+const EXPRESS_SHIPPING = 1500;
 const EXPRESS_UPGRADE_FEE = 800;
 
 const CartContext = createContext<CartContextType | undefined>(undefined);

@@ -17,36 +17,45 @@ const reviewsSchema = generateReviewsSchema(reviews.slice(0, 3), 'FreshLock Pro 
 function Hero() {
   return (
     <section className="bg-primary text-white" aria-labelledby="hero-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-28">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
           <div>
-            <span className="inline-block bg-accent/20 text-accent text-sm font-semibold px-3 py-1 rounded-full mb-4">
-              🇯🇵 話題のハンディ真空保存機・公式サイト
+            <span className="inline-block bg-accent/20 text-accent text-sm font-semibold px-3 py-1 rounded-full mb-3 sm:mb-4">
+              液体・調味液・魚まで真空できるハンディ真空パック機
             </span>
-            <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              鮮度を閉じ込める。<br />
-              <span className="text-accent">美味しさを長持ち。</span>
+            <h1 id="hero-heading" className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.2] sm:leading-tight mb-3 sm:mb-4 -tracking-[0.01em]">
+              ハンディ真空パック機{' '}
+              <span className="text-accent">液体・調味液・釣魚対応</span>
             </h1>
-            <p className="text-lg text-gray-300 mb-8 max-w-lg">
-              FreshLock（フレッシュロック）の<strong>ハンディ真空ポンプ</strong>で、食材の鮮度を最大5倍長持ち。コードレス・ワンタッチで、毎日のキッチンにもアウトドアにもぴったりです。
+            <p className="text-base sm:text-lg font-semibold text-white/90 mb-3">
+              鮮度を閉じ込める。美味しさを長持ち。
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/products" className="btn-primary text-lg">
-                今すぐ購入
+            <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-lg leading-relaxed">
+              FreshLock（フレッシュロック）<strong>コードレスハンディ真空パック機</strong>は、<strong>透明な機械式自動排水カップ</strong>で液体・ソース・調味液・煮汁・釣った魚のドリップもモーター故障の心配なく吸引可能。専用袋には<strong>リンゴ色一体型ジップスライダー</strong>が付いてクリップ紛失なし。水路に電子部品がなく丸洗い可能（※本体は防水ではありません）。USB-C充電・ワンタッチ操作。食材の鮮度を最大5倍長持ち、冷凍焼けを防止します。
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 text-sm sm:text-base text-white/90">
+              <li className="flex items-start gap-2"><span className="text-accent mt-0.5" aria-hidden="true">✓</span>透明集水カップで液体も吸引可（モーター故障なし）</li>
+              <li className="flex items-start gap-2"><span className="text-accent mt-0.5" aria-hidden="true">✓</span>リンゴ色一体型ジップスライダー（クリップ紛失なし）</li>
+              <li className="flex items-start gap-2"><span className="text-accent mt-0.5" aria-hidden="true">✓</span>USB-C充電・コードレス・最大40回以上使用</li>
+              <li className="flex items-start gap-2"><span className="text-accent mt-0.5" aria-hidden="true">✓</span>最大-60kPaの吸引力で鮮度5倍長持ち</li>
+            </ul>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/products" className="btn-primary text-base sm:text-lg w-full sm:w-auto px-6">
+                今すぐチェック
               </Link>
-              <Link href="#features" className="btn-outline border-white text-white hover:bg-white hover:text-primary text-lg">
+              <Link href="#features" className="btn-outline border-white text-white hover:bg-white hover:text-primary text-base sm:text-lg w-full sm:w-auto px-6">
                 詳しく見る
               </Link>
             </div>
           </div>
-          <div className="flex justify-center md:justify-center mt-8 md:mt-0">
+          <div className="flex justify-center mt-6 sm:mt-8 md:mt-0">
             <Image src="/images/products/sealer-main.jpg"
-              alt="FreshLock Pro ハンディ真空ポンプ パールホワイト シルバートップ グリーンジッパーの専用袋付き"
-              className="rounded-2xl shadow-2xl w-64 md:w-full max-w-md md:max-w-none"
+              alt="FreshLock Pro ハンディ真空パック機 パールホワイト シルバートップ グリーンジッパーの専用袋付き"
+              className="rounded-2xl shadow-2xl w-56 sm:w-64 md:w-full max-w-sm sm:max-w-md md:max-w-none"
               width={600}
               height={600}
               priority
-              sizes="(max-width: 768px) 256px, 600px" />
+              sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, 600px" />
           </div>
         </div>
       </div>
@@ -81,24 +90,24 @@ function AboutFreshLock() {
 /* ───────── Features ───────── */
 const featureList = [
   {
+    icon: '💧',
+    title: '液体も吸引OK・モーター故障なし',
+    text: '透明な機械式自動排水カップが液体・ソース・煮汁・魚のドリップをせき止め、モーターを守ります。',
+  },
+  {
+    icon: '🟢',
+    title: 'リンゴ色一体型ジップスライダー',
+    text: '専用袋には緑色スライダーが一体装着。クリップをなくす心配がなく、片手でサッと閉じられます。',
+  },
+  {
     icon: '🛡️',
-    title: '鮮度5倍長持ち',
-    text: '強力ポンプが空気を95%除去。酸化や菌の繁殖を抑え、食材を数週間新鮮に保ちます。',
-  },
-  {
-    icon: '📦',
-    title: '省スペース収納',
-    text: '真空密封した袋は冷蔵庫・冷凍庫・パントリーでスッキリ積み重ね。収納スペースを最大40%節約。',
-  },
-  {
-    icon: '👆',
-    title: 'ワンタッチ簡単',
-    text: '難しい設定は一切なし。袋をセットしてボタンを押すだけ。ご家族どなたでも使えます。',
+    title: '鮮度5倍長持ち・冷凍焼け防止',
+    text: '最大-60kPaの吸引力で空気を95%除去。酸化や菌の繁殖、冷凍焼けを抑えて食材を数週間新鮮に保ちます。',
   },
   {
     icon: '🔋',
-    title: 'コードレスで持ち運び',
-    text: 'USB-C充電式。フル充電で40回以上使用可能。BBQ・キャンプ・旅行先でも大活躍。',
+    title: 'コードレス・USB-C充電',
+    text: 'フル充電で40回以上使用可能。キッチンはもちろん、釣り・BBQ・キャンプなどアウトドアでも大活躍。',
   },
 ];
 
@@ -348,15 +357,15 @@ function BlogPreview() {
 /* ───────── CTA ───────── */
 function Cta() {
   return (
-    <section className="py-20 bg-primary text-white text-center">
+    <section className="py-12 sm:py-16 md:py-20 bg-primary text-white text-center">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          食材の鮮度、もっと長持ちさせませんか？
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          液体も魚も真空できるハンディ真空パック機
         </h2>
-        <p className="text-gray-300 mb-8 text-lg">
-          世界10,000世帯以上が愛用。¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上のご注文で全国送料無料。
+        <p className="text-gray-300 mb-8 text-base sm:text-lg leading-relaxed">
+          世界10,000世帯以上が愛用。¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上のご注文で日本全国送料無料（国際航空便・追跡あり）。30日間返金保証。
         </p>
-        <Link href="/products" className="btn-primary text-lg">
+        <Link href="/products" className="btn-primary text-base sm:text-lg w-full sm:w-auto px-8">
           FreshLockを今すぐチェック
         </Link>
       </div>

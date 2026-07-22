@@ -7,9 +7,9 @@ import { CartProvider } from '@/lib/cart-context';
 import { generateOrganizationSchema, generateWebsiteSchema, SITE_URL } from '@/lib/schema';
 
 const siteName = 'FreshLock（フレッシュロック）';
-const title = 'FreshLock（フレッシュロック）公式 | ハンディ真空ポンプで食材の鮮度を5倍長持ち';
+const title = 'FreshLock Pro | 液体・調味液・釣った魚も真空パックできるハンディ真空パック機';
 const description =
-  'FreshLock公式サイト。コードレス・ワンタッチのハンディ真空ポンプで、食材の鮮度を最大5倍長持ち。繰り返し使える専用真空チャック袋付き、USB-C充電。¥8,000以上のご注文で全国送料無料。30日間返品保証。';
+  'FreshLock Pro コードレスハンディ真空パック機。透明な機械式自動排水カップで液体・ソース・調味液・煮汁・釣った魚のドリップもモーター故障なしで吸引可能。専用袋はリンゴ色一体型ジップスライダー付きでクリップ紛失なし。USB-C充電・ワンタッチ操作・繰り返し使える真空保存バッグ。食材の鮮度を最大5倍長持ち、冷凍焼け・酸化を防止。';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   description,
   keywords:
-    '真空パック機,ハンディ真空ポンプ,真空保存機,コードレス真空パック,食品真空保存,真空チャック袋,繰り返し使える保存袋,食品保存,作り置き,食品ロス削減,FreshLock,フレッシュロック,キッチン家電',
+    'ハンディ真空パック機,真空シーラー,液体対応真空パック,真空保存バッグ,コードレス真空シーラー,ハンディ真空ポンプ,食品真空保存,真空調理,sous vide,冷凍焼け防止,釣り 真空パック,アウトドア 真空保存,作り置き 真空パック,キャンプ 保存,FreshLock,フレッシュロック',
   applicationName: siteName,
   icons: {
     icon: [{ url: '/favicon.ico', sizes: '32x32' }, { url: '/logo.svg', type: 'image/svg+xml' }],
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: '/images/products/sealer-main.jpg',
         width: 1200,
         height: 630,
-        alt: 'FreshLock ハンディ真空ポンプ',
+        alt: 'FreshLock Pro ハンディ真空パック機',
       },
     ],
   },

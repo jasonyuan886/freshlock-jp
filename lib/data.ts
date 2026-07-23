@@ -15,8 +15,9 @@ export const products: Product[] = [
     description:
       'FreshLock Proは、水分の多い食材・漬け込み調理・釣った魚の保存まで対応するコードレス式ハンディ真空保存機です。付属専用チャック袋の空気弁にノズルを当てボタンを押すだけで、強力-60kPaモーターが数秒で空気を抜き取り、食材の鮮度を最大5倍長持ちさせます。吸気口に内蔵された吸水スポンジが空気弁に残ったドリップをキャッチして液だれを防ぎ、機械式排水チューブが本体に入り込んだ水分を自動で外部へ排出。モーターの焼き付きトラブルを根本から解消します。ヒートバー不要、複雑な設定なし。USB-C充電式でキッチン・冷蔵庫・釣り場・BBQでも手軽に使えます。',
     shortDescription: '吸水スポンジ＋排水チューブ搭載ハンディ真空機 — 汁物・魚まで密封、モーターを守る。',
-    image: '/images/products/sealer-detail-1.jpg',
+    image: '/images/products/sealer-main.jpg',
     images: [
+      '/images/products/sealer-main.jpg',
       '/images/products/sealer-detail-1.jpg',
       '/images/products/sealer-detail-2.jpg',
       '/images/products/sealer-real-1.jpg',

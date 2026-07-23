@@ -19,10 +19,11 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!product) return {};
   const url = `${SITE_URL}/products/${product.slug}`;
   const seoTitles: Record<string, string> = {
-    'freshlock-pro': 'FreshLock Pro（フレッシュロック プロ）｜液体・煮汁・魚のドリップも吸えるハンディ真空パック機',
+    'freshlock-pro': 'FreshLock Pro（フレッシュロック プロ）｜吸水スポンジ＆排水チューブ搭載 液だれしないハンディ真空パック機',
     'freshlock-starter-kit': 'FreshLock スターターキット｜ハンディ真空パック機 Pro + 専用袋30枚セット',
-    'vacuum-seal-bags-30-pack': 'FreshLock 真空チャック袋30枚（中サイズ）｜繰り返し使える BPAフリー',
-    'vacuum-seal-bags-50-pack': 'FreshLock 真空チャック袋50枚（大サイズ）｜まとめ買い・家族分・低温調理に',
+    'vacuum-seal-bags-25-pack': 'FreshLock 真空チャック袋25枚（小サイズ 22×21cm）｜おやつ・チーズ・小分け保存 BPAフリー',
+    'vacuum-seal-bags-30-pack': 'FreshLock 真空チャック袋30枚（中サイズ 26×28cm）｜お肉・おかずの日常使いに BPAフリー',
+    'vacuum-seal-bags-50-pack': 'FreshLock 真空チャック袋50枚（大サイズ 30×34cm）｜家族分・まとめ買い・低温調理に',
   };
   const title = seoTitles[product.slug] || product.name;
   const description = product.shortDescription + ` ¥${FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で国際航空便（追跡あり）送料無料、30日間返品保証。`;
@@ -54,14 +55,14 @@ export default function ProductDetailPage({ params }: { params: Params }) {
   const product = products.find((p) => p.slug === params.slug);
   if (!product) return notFound();
 
-  // クロスセル最適化：本体→袋、袋→本体+他の袋
+  // クロスセル最適化：本体→全袋、袋→本体+他の2袋
   let related;
   if (product.slug === 'freshlock-pro') {
     related = products.filter((p) => p.category === 'bags');
   } else if (product.category === 'bags') {
     const sealer = products.find((x) => x.slug === 'freshlock-pro');
-    const otherBag = products.find((x) => x.category === 'bags' && x.slug !== product.slug);
-    related = [sealer, otherBag].filter(Boolean) as typeof products;
+    const otherBags = products.filter((x) => x.category === 'bags' && x.slug !== product.slug);
+    related = [sealer, ...otherBags].filter(Boolean) as typeof products;
   } else {
     related = products.filter((x) => x.slug !== product.slug && x.category === product.category).slice(0, 2);
   }
@@ -247,7 +248,7 @@ export default function ProductDetailPage({ params }: { params: Params }) {
         {related.length > 0 && (
           <section className="mt-12 sm:mt-20" aria-labelledby="related-heading">
             <h2 id="related-heading" className="section-title mb-8">{relatedHeading}</h2>
-            <div className="grid sm:grid-cols-2 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {related.map((p) => (
                 <Link
                   key={p.slug}

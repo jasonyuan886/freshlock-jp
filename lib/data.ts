@@ -26,6 +26,7 @@ export const products: Product[] = [
       '/images/products/sealer-drain.jpg',
       '/images/products/sealer-detail-3.jpg',
       '/images/products/sealer-use.jpg',
+      '/images/products/sealer-angled.jpg',
     ],
     features: [
       '強力-60kPa吸引 — 袋の空気弁から数秒で空気を抜き取り',

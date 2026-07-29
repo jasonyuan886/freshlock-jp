@@ -6,10 +6,10 @@ import Footer from '@/components/Footer';
 import { CartProvider } from '@/lib/cart-context';
 import { generateOrganizationSchema, generateWebsiteSchema, SITE_URL } from '@/lib/schema';
 
-const siteName = 'FreshLock（フレッシュロック）';
-const title = 'FreshLock（フレッシュロック）公式 | ハンディ真空ポンプで食材の鮮度を5倍長持ち';
+const siteName = 'FreshLock Japan（フレッシュロック）';
+const title = 'FreshLock公式｜ハンディ真空ポンプで作り置き・小分け冷凍・冷凍焼け防止';
 const description =
-  'FreshLock公式サイト。コードレス・ワンタッチのハンディ真空ポンプで、食材の鮮度を最大5倍長持ち。繰り返し使える専用真空チャック袋付き、USB-C充電。¥8,000以上のご注文で全国送料無料。30日間返品保証。';
+  'FreshLock（フレッシュロック）公式サイト。片手でワンタッチのコードレス式ハンディ真空ポンプ。-60kPa吸引力・USB-C充電・着脱式汁受けで汁物対応・専用袋不要・BPAフリー・音が静か。作り置き・離乳食の小分け冷凍・冷凍焼け防止に。¥5,500以上のご注文で全国送料無料、30日間返品保証、本体2年保証。';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   description,
   keywords:
-    '真空パック機,ハンディ真空ポンプ,真空保存機,コードレス真空パック,食品真空保存,真空チャック袋,繰り返し使える保存袋,食品保存,作り置き,食品ロス削減,FreshLock,フレッシュロック,キッチン家電',
+    '真空パック機,ハンディ真空ポンプ,真空保存機,コードレス真空パック,食品真空保存,真空チャック袋,作り置き,離乳食,小分け冷凍,冷凍焼け防止,コンパクト,片手でワンタッチ,音が静か,汁物対応,専用袋不要,レバーが軽い,丸洗いOK,BPAフリー,USB-C,FreshLock,フレッシュロック,キッチン家電',
   applicationName: siteName,
   icons: {
     icon: '/logo.svg',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
     languages: {
-      'ja': 'https://jp.freshlocksealer.com',
-      'en': 'https://www.freshlocksealer.com',
+      'ja-JP': 'https://jp.freshlocksealer.com',
+      'en-US': 'https://www.freshlocksealer.com',
       'x-default': 'https://www.freshlocksealer.com',
     },
   },
@@ -75,8 +75,11 @@ const websiteSchema = generateWebsiteSchema();
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja">
+    <html lang="ja-JP">
       <head>
+        <link rel="alternate" hrefLang="ja-JP" href="https://jp.freshlocksealer.com" />
+        <link rel="alternate" hrefLang="en-US" href="https://www.freshlocksealer.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.freshlocksealer.com" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-N16R0F2B1Y" strategy="afterInteractive" />
         <Script id="ga4-init" strategy="afterInteractive">
           {`

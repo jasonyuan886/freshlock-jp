@@ -72,7 +72,7 @@ export default function AboutPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>
-              <span><strong>¥8,000以上のご注文で全国送料無料</strong> — 日本国内どこでも送料無料でお届けします。</span>
+              <span><strong>¥5,500以上のご注文で全国送料無料</strong> — 日本国内どこでも送料無料でお届けします。</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>

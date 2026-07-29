@@ -229,7 +229,7 @@ export default function ProductDetailPage({ params }: { params: Params }) {
 
             {/* Trust badges */}
             <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-500" aria-label="安心の保証">
-              <span>🚚 全国一律送料¥680（¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で無料）</span>
+              <span>🚚 全国一律送料¥600（¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で無料）</span>
               <span>↩️ 30日間返品保証</span>
               <span>🔒 安全なお支払い</span>
             </div>

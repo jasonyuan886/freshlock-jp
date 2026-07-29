@@ -36,7 +36,7 @@ export default function ShippingPage() {
               <tr>
                 <td className="border border-gray-300 px-4 py-2">国際通常配送（追跡あり）</td>
                 <td className="border border-gray-300 px-4 py-2">5〜12営業日</td>
-                <td className="border border-gray-300 px-4 py-2">8,000円以上で送料無料<br />8,000円未満は全国一律680円</td>
+                <td className="border border-gray-300 px-4 py-2">5,500円以上で送料無料<br />5,500円未満は全国一律600円</td>
               </tr>
             </tbody>
           </table>
@@ -44,7 +44,7 @@ export default function ShippingPage() {
         <p className="text-sm text-gray-600 italic">※お届け日数は発送後の目安です。日本国内での税関手続き・天候・交通事情により数日程度前後する場合がございます。通関時の輸入消費税・関税が発生した場合はお客様のご負担となります（少額貨物のため課税されないケースが大半です）。</p>
 
         <h2>送料無料</h2>
-        <p>商品合計金額が<strong>8,000円（税込）以上</strong>の場合、全国どこでも<strong>国際通常配送料が無料</strong>となります。チェックアウト時に自動適用されます。</p>
+        <p>商品合計金額が<strong>5,500円（税込）以上</strong>の場合、全国どこでも<strong>国際通常配送料が無料</strong>となります。チェックアウト時に自動適用されます。</p>
 
         <h2>配送追跡</h2>
         <p>商品発送後、追跡番号を記載した発送完了メールをお送りいたします。メールに記載の追跡リンクより配送状況をご確認いただけます。発送後3営業日を過ぎても追跡メールが届かない場合は、<a href="mailto:support@freshlocksealer.com" className="text-accent hover:underline">support@freshlocksealer.com</a>までお問い合わせください。</p>

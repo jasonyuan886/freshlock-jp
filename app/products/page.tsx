@@ -5,7 +5,7 @@ import ProductsClient from './ProductsClient';
 export const metadata: Metadata = {
   title: 'ハンディ真空ポンプ・真空保存袋の公式通販',
   description:
-    'FreshLock（フレッシュロック）公式オンラインストア。コードレス式ハンディ真空ポンプ、スターターキット、繰り返し使える真空チャック袋を販売。¥8,000以上で全国送料無料。',
+    'FreshLock（フレッシュロック）公式オンラインストア。コードレス式ハンディ真空ポンプ、スターターキット、繰り返し使える真空チャック袋を販売。¥5,500以上で全国送料無料。',
   alternates: { canonical: '/products' },
 };
 

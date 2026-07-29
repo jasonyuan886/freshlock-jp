@@ -8,6 +8,122 @@ import Image from 'next/image';
 
 type Params = { slug: string };
 
+function StarRating({ rating, size = 'text-base' }: { rating: number; size?: string }) {
+  return (
+    <span className={size}>
+      {'★'.repeat(rating)}
+      <span className="text-gray-300">{'★'.repeat(5 - rating)}</span>
+    </span>
+  );
+}
+
+function ReviewsSection() {
+  const avg = (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1);
+  const total = reviews.length;
+  const dist: Record<number, number> = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+  reviews.forEach((r) => {
+    dist[r.rating] = (dist[r.rating] || 0) + 1;
+  });
+  return (
+    <section id="reviews" className="mt-16 border-t pt-12" aria-labelledby="reviews-heading">
+      <h2 id="reviews-heading" className="text-2xl font-bold text-primary mb-6">カスタマーレビュー</h2>
+
+      <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="text-center md:text-left">
+          <div className="text-5xl font-bold text-primary">{avg}</div>
+          <div className="flex justify-center md:justify-start mt-1">
+            <StarRating rating={Math.round(Number(avg))} />
+          </div>
+          <p className="text-sm text-gray-500 mt-1">{total}件のレビュー（購入者様の声）</p>
+        </div>
+        <div className="md:col-span-2 space-y-2">
+          {[5, 4, 3, 2, 1].map((star) => {
+            const count = dist[star] || 0;
+            const pct = total ? (count / total) * 100 : 0;
+            return (
+              <div key={star} className="flex items-center gap-3 text-sm">
+                <span className="w-10 text-gray-600">{star} ★</span>
+                <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-accent rounded-full" style={{ width: `${pct}%` }} />
+                </div>
+                <span className="w-8 text-right text-gray-500">{count}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        {reviews.map((r) => (
+          <article key={r.name + r.date} className="bg-white border rounded-xl p-5" itemScope itemType="https://schema.org/Review">
+            <div itemProp="itemReviewed" itemScope itemType="https://schema.org/Product">
+              <meta itemProp="name" content="FreshLock Pro ハンディ真空ポンプ" />
+            </div>
+            <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
+              <meta itemProp="ratingValue" content={String(r.rating)} />
+              <meta itemProp="bestRating" content="5" />
+              <meta itemProp="worstRating" content="1" />
+            </div>
+            <div className="flex items-center justify-between mb-2">
+              <StarRating rating={r.rating} size="text-sm" />
+              {r.verified && (
+                <span className="text-[10px] font-semibold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">✓ 購入済み</span>
+              )}
+            </div>
+            <p className="text-gray-700 text-sm mb-3 leading-relaxed" itemProp="reviewBody">&ldquo;{r.text}&rdquo;</p>
+            <div className="flex items-center justify-between text-xs text-gray-500">
+              <span className="font-semibold text-primary" itemProp="author" itemScope itemType="https://schema.org/Person">
+                <span itemProp="name">{r.name}</span>
+              </span>
+              <time dateTime={r.date}>
+                {new Date(r.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </div>
+            {r.images && r.images.length > 0 && (
+              <div className="flex gap-2 mt-3 flex-wrap">
+                {r.images.map((src, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`${r.name}様のレビュー写真`}
+                    loading="lazy"
+                    className="w-20 h-20 object-cover rounded border border-gray-200"
+                  />
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-8 text-center">
+        <a
+          href="mailto:freshlocksealer@gmail.com?subject=FreshLock%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E9%80%81%E4%BF%A1&body=FreshLock%E3%81%94%E8%B3%BC%E5%85%A5%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E3%81%8A%E8%81%9E%E3%81%8B%E3%81%9B%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84..."
+          className="inline-block btn-secondary"
+        >
+          ✍️ レビューを書く
+        </a>
+        <p className="text-xs text-gray-500 mt-2">レビューは実際にご購入いただいたお客様の声です。好意的なレビューに報酬を支払うことはありません。</p>
+      </div>
+    </section>
+  );
+}
+
+function StickyMobileATC({ productName, productPrice }: { productName: string; productPrice: string }) {
+  return (
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40 px-4 py-3 flex items-center gap-3">
+      <div className="flex-1 min-w-0">
+        <div className="text-xs text-gray-500 truncate">{productName}</div>
+        <div className="text-accent font-bold">{productPrice}</div>
+      </div>
+      <a href="#purchase" className="btn-primary text-sm px-5 py-2 whitespace-nowrap">
+        カートに入れる
+      </a>
+    </div>
+  );
+}
+
 export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
 }
@@ -181,7 +297,9 @@ export default function ProductDetailPage({ params }: { params: Params }) {
               </ul>
             </section>
 
-            <AddToCartClient product={product} />
+            <div id="purchase">
+              <AddToCartClient product={product} />
+            </div>
 
             {/* Specs */}
             <section className="bg-gray-50 rounded-xl p-6 mt-6">
@@ -215,7 +333,7 @@ export default function ProductDetailPage({ params }: { params: Params }) {
                 <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                   <h3 className="font-semibold text-gray-800" itemProp="name">バッテリーは充電式ですか？</h3>
                   <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                    <p className="leading-relaxed" itemProp="text">はい。USB-C充電式で、約2時間のフル充電で40回以上の真空引きが可能。毎日のキッチン使いで数日〜1週間持ちます。</p>
+                    <p className="leading-relaxed" itemProp="text">はい。USB-C充電式で、約2時間のフル充電で80〜100回の真空引きが可能。毎日のキッチン使いで数日〜1週間持ちます。</p>
                   </div>
                 </div>
                 <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
@@ -234,6 +352,9 @@ export default function ProductDetailPage({ params }: { params: Params }) {
               <span>🔒 安全なお支払い</span>
             </div>
           </section>
+
+        {/* Customer Reviews */}
+        <ReviewsSection />
         </article>
 
         {/* Related */}
@@ -263,6 +384,8 @@ export default function ProductDetailPage({ params }: { params: Params }) {
           </section>
         )}
       </div>
+      <StickyMobileATC productName={product.name} productPrice={formatPrice(product.price)} />
+      <div className="md:hidden h-20" />
     </>
   );
 }

@@ -19,7 +19,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-sm lg:text-base">
             <Link href="/products" className="text-gray-700 hover:text-primary transition">
               製品一覧
             </Link>

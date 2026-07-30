@@ -96,7 +96,7 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <div className="text-xs text-gray-400">お支払い方法</div>
-                <span className="text-xs text-green-400">🛡️ PayPal買い手保護</span>
+                <span className="text-xs text-blue-300">🛡️ PayPal買い手保護</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {['PayPal', 'Visa', 'Mastercard', 'American Express', 'JCB'].map((p) => (

@@ -22,8 +22,11 @@ export const metadata: Metadata = {
     '真空パック機,ハンディ真空ポンプ,真空保存機,コードレス真空パック,食品真空保存,真空チャック袋,作り置き,離乳食,小分け冷凍,冷凍焼け防止,コンパクト,片手でワンタッチ,音が静か,汁物対応,専用袋不要,レバーが軽い,丸洗いOK,BPAフリー,USB-C,FreshLock,フレッシュロック,キッチン家電',
   applicationName: siteName,
   icons: {
-    icon: '/logo.svg',
-    apple: '/logo.svg',
+    icon: '/favicon-32.png',
+    apple: '/apple-touch-icon.png',
+    other: {
+      'msapplication-TileImage': '/icon-192.png',
+    },
   },
   alternates: {
     canonical: '/',

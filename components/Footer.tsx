@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -42,10 +43,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-primary font-bold text-xl">F</span>
-              </div>
-              <span className="text-xl font-bold">FreshLock Japan</span>
+              <Image src="/logo-icon.png" alt="FreshLock" width={32} height={36} className="w-8 h-9" />
+              <span className="text-xl font-bold">FreshLock</span>
             </div>
             <p className="text-gray-300 text-sm mb-4">
               片手でワンタッチのコードレス式ハンディ真空ポンプ。作り置き・離乳食・小分け冷凍・冷凍焼け防止に。

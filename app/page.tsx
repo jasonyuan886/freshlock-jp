@@ -27,25 +27,24 @@ function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span className="inline-block bg-accent/20 text-accent text-sm font-semibold px-3 py-1 rounded-full mb-4">
-              🧊 冷凍焼けを、もうあきらめない
+              💧 煮物・カレー・マリネ液も真空できる — モーターを傷めない機械式ドレン構造
             </span>
             <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               FreshLock Pro<br />
               <span className="text-accent">ハンディ真空ポンプ</span>
             </h1>
             <p className="text-lg text-gray-200 mb-6 max-w-lg">
-              片手でワンタッチの<strong>コードレス式</strong>ハンディ真空ポンプ。
-              <strong>-60kPa</strong>の吸引力で小分け冷凍・<strong>作り置き</strong>・離乳食もあっという間に真空保存。
-              着脱式の<strong>ドリップトレイ</strong>で汁物対応・<strong>丸洗いOK</strong>。
-              <strong>USB-C充電</strong>、<strong>BPAフリー</strong>、<strong>専用袋不要</strong>で市販のエンボスバルブ袋に対応します。
+              <strong>機械式ドレンカップ（汁受け）</strong>で煮物・たれ・マリネ液を
+              モーターの<em>手前で</em>キャッチ。ポンプ詰まりも、モーター焼損もありません。
+              <strong>-60kPa</strong>のワンタッチ真空で食品を<strong>5倍長持ち</strong>。
+              <strong>USB-C充電</strong>・<strong>専用袋不要</strong>で市販のエンボスバルブ袋に対応します。
             </p>
             <div className="flex flex-wrap gap-2 mb-8 text-sm">
               {[
-                '🔌 USB-C充電',
-                '💧 着脱式汁受け・汁物対応',
+                '💧 機械式ドレンカップ（汁物対応・丸洗いOK）',
+                '🔌 USB-C・80〜100回/充電',
                 '🔇 音が静か（約60dB）',
-                '♻️ 専用袋不要',
-                '⚖️ 約210g・コンパクト',
+                '♻️ 専用袋不要・市販袋OK',
                 '🛡️ 本体2年保証',
               ].map((b) => (
                 <span key={b} className="bg-white/10 text-white text-xs px-2.5 py-1 rounded-full border border-white/20">

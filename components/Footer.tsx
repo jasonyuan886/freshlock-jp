@@ -96,10 +96,9 @@ export default function Footer() {
             <div>
               <div className="text-xs text-gray-400 mb-2">お支払い方法</div>
               <div className="flex flex-wrap gap-2">
-                {['Visa', 'Mastercard', 'American Express', 'JCB', 'PayPal', 'Apple Pay', 'Google Pay'].map((p) => (
-                  <span key={p} className="bg-white/10 text-white text-xs px-3 py-1.5 rounded">{p}</span>
+                {['PayPal', 'Visa', 'Mastercard', 'American Express', 'JCB'].map((p) => (
+                  <span key={p} className="bg-white/10 text-white text-xs px-3 py-1.5 rounded border border-white/20">{p}</span>
                 ))}
-                <span className="bg-white/5 text-gray-400 text-xs px-3 py-1.5 rounded border border-dashed border-gray-500">PayPay・コンビニ決済 準備中</span>
               </div>
             </div>
             <div>
@@ -123,7 +122,7 @@ export default function Footer() {
             <p>販売業者：深圳市七力科技有限公司（Shichiri Technology Co., Ltd.）</p>
             <p>運営責任者：カスタマーサポート</p>
             <p>所在地：中国広東省深セン市（日本国内に住所・電話番号はございません。お問い合わせはメールにて jp-support@freshlocksealer.com へお願いいたします。）</p>
-            <p>支払方法：クレジットカード（Visa/MC/Amex/JCB）・PayPal・Apple Pay・Google Pay</p>
+            <p>支払方法：PayPal（Visa/Mastercard/Amex/JCBはPayPal経由でご利用いただけます）</p>
             <p>商品代金以外の必要料金：送料（全国一律¥600／¥5,500以上で無料）、沖縄・離島は別途お見積もり</p>
             <p>引渡時期：ご注文確定後1〜2営業日以内に発送、国際郵便（ヤマト提携）にて5〜10営業日でお届け</p>
             <p>返品・交換：商品到着後30日間の返品保証。初期不良・破損は送料当社負担で交換。<Link href="/about#tokutei" className="underline hover:text-white">詳しくはこちら</Link></p>

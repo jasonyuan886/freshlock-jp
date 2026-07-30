@@ -47,7 +47,7 @@ export default function PrivacyPage() {
               当社は、お客様の個人情報を販売することはありません。ただし、以下の場合に限り情報を共有することがあります：
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-600 mt-3">
-              <li><strong>サービス提供事業者：</strong>決済代行業者（Stripe、PayPal）、配送業者、ITサービス提供者など、業務遂行に必要な範囲内</li>
+              <li><strong>サービス提供事業者：</strong>決済代行業者（PayPal）、配送業者、ITサービス提供者など、業務遂行に必要な範囲内</li>
               <li><strong>法令に基づく場合：</strong>法的義務または権利保護のために必要な場合</li>
               <li><strong>事業譲渡：</strong>合併・買収・事業譲渡に伴う場合</li>
             </ul>

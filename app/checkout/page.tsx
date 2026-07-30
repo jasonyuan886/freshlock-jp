@@ -21,7 +21,7 @@ export default function CheckoutPage() {
   const shipping = totalPrice >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
   const total = totalPrice + shipping;
 
-  const [paymentMethod, setPaymentMethod] = useState('stripe');
+  const [paymentMethod, setPaymentMethod] = useState('paypal');
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState('');
 
@@ -271,6 +271,7 @@ export default function CheckoutPage() {
             <div className="bg-white rounded-xl p-6 shadow">
               <h2 className="font-bold text-primary text-lg mb-4">お支払い方法</h2>
               <div className="space-y-3">
+                {/* Stripe (クレジットカード直接) は準備中のためUI非表示。コードは将来再有効化のため残す
                 <label className={`flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition ${paymentMethod === 'stripe' ? 'border-primary bg-primary/5' : 'hover:bg-gray-50'}`}>
                   <input
                     type="radio"
@@ -285,6 +286,7 @@ export default function CheckoutPage() {
                     <p className="text-xs text-gray-500 mt-0.5">Visa・Mastercard・Amex — Stripeによる安全な決済</p>
                   </div>
                 </label>
+                */}
                 <label className={`flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition ${paymentMethod === 'paypal' ? 'border-primary bg-primary/5' : 'hover:bg-gray-50'}`}>
                   <input
                     type="radio"
@@ -296,9 +298,10 @@ export default function CheckoutPage() {
                   />
                   <div>
                     <span className="font-medium">🅿️ PayPal</span>
-                    <p className="text-xs text-gray-500 mt-0.5">PayPalアカウントでお支払い</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Visa・Mastercard・Amex・JCBはPayPal経由でご利用いただけます（PayPalアカウント不要）</p>
                   </div>
                 </label>
+                {/* 代金引換・PayPay・コンビニは準備中のためUI非表示
                 <label className={`flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition ${paymentMethod === 'cod' ? 'border-primary bg-primary/5' : 'hover:bg-gray-50'}`}>
                   <input
                     type="radio"
@@ -313,6 +316,7 @@ export default function CheckoutPage() {
                     <p className="text-xs text-gray-500 mt-0.5">商品到着時にお支払い（準備中）</p>
                   </div>
                 </label>
+                */}
               </div>
 
               <div className="mt-4 p-3 bg-green-50 rounded-lg flex items-start gap-2">
@@ -348,19 +352,35 @@ export default function CheckoutPage() {
                 ))}
               </div>
               <div className="border-t pt-4 space-y-2 text-sm">
+                {/* 送料無料プログレスバー */}
+                {totalPrice < FREE_SHIPPING_THRESHOLD ? (
+                  <div className="bg-amber-50 border border-amber-300 rounded-lg p-3 mb-2">
+                    <p className="text-xs font-semibold text-amber-800 mb-1.5">
+                      🚚 あと{formatPrice(FREE_SHIPPING_THRESHOLD - totalPrice)}で送料無料
+                      <span className="text-amber-700 font-normal">（{formatPrice(SHIPPING_FEE)}おトク）</span>
+                    </p>
+                    <div className="w-full bg-amber-200 rounded-full h-2 overflow-hidden">
+                      <div className="bg-accent h-2 rounded-full transition-all" style={{ width: `${Math.min(100, (totalPrice / FREE_SHIPPING_THRESHOLD) * 100)}%` }} />
+                    </div>
+                    <Link href="/cart" className="text-xs text-accent font-semibold hover:underline mt-1.5 inline-block">
+                      ← カートに戻って商品を追加
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="bg-green-50 border border-green-400 rounded-lg p-3 mb-2">
+                    <p className="text-xs font-semibold text-green-700 text-center">
+                      🎉 送料無料を達成しました！
+                    </p>
+                  </div>
+                )}
                 <div className="flex justify-between">
                   <span className="text-gray-500">小計</span>
                   <span>{formatPrice(totalPrice)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">送料</span>
-                  <span>{shipping === 0 ? <span className="text-accent font-medium">無料</span> : formatPrice(shipping)}</span>
+                  <span>{shipping === 0 ? <span className="text-green-600 font-medium">無料</span> : formatPrice(shipping)}</span>
                 </div>
-                {totalPrice < FREE_SHIPPING_THRESHOLD && (
-                  <p className="text-xs text-gray-400">
-                    あと{formatPrice(FREE_SHIPPING_THRESHOLD - totalPrice)}で送料無料！
-                  </p>
-                )}
               </div>
               <div className="border-t mt-4 pt-4 flex justify-between font-bold text-lg">
                 <span>合計</span>

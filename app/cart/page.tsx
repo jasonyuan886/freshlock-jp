@@ -193,7 +193,11 @@ export default function CartPage() {
           <Link href="/checkout" className="btn-primary w-full block text-center">
             ご購入手続きへ
           </Link>
-          <Link href="/products" className="block text-center text-sm text-gray-500 hover:text-primary mt-4">
+          <div className="flex items-center justify-center gap-2 mt-3 text-xs text-gray-500">
+            <span className="inline-flex items-center font-bold text-[#003087] bg-[#ffc439] px-2 py-0.5 rounded text-xs tracking-wide">PayPal</span>
+            <span>🛡️ 買い手保護制度対象</span>
+          </div>
+          <Link href="/products" className="block text-center text-sm text-gray-500 hover:text-primary mt-2">
             ← 買い物を続ける
           </Link>
 

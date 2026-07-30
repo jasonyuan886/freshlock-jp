@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { products, reviews, FREE_SHIPPING_THRESHOLD } from '@/lib/data';
 import { generateProductSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/schema';
 import AddToCartClient from './AddToCartClient';
+import FrequentlyBoughtTogether from '@/components/FrequentlyBoughtTogether';
 import Image from 'next/image';
 
 type Params = { slug: string };
@@ -165,6 +166,24 @@ export default function ProductDetailPage({ params }: { params: Params }) {
   const related = products
     .filter((p) => p.slug !== product.slug && p.category === product.category)
     .slice(0, 2);
+
+  // よく一緒に購入されています
+  const getBundleProducts = (): Product[] => {
+    if (product.slug === 'freshlock-pro') {
+      return products.filter((p) => p.slug === 'vacuum-seal-bags-30-pack');
+    }
+    if (product.slug === 'freshlock-starter-kit') {
+      return products.filter((p) => p.slug === 'vacuum-seal-bags-50-pack');
+    }
+    if (product.slug === 'vacuum-seal-bags-30-pack') {
+      return products.filter((p) => p.slug === 'freshlock-pro');
+    }
+    if (product.slug === 'vacuum-seal-bags-50-pack') {
+      return products.filter((p) => p.slug === 'vacuum-seal-bags-30-pack');
+    }
+    return [];
+  };
+  const bundleProducts = getBundleProducts();
 
   const formatPrice = (price: number) => `¥${price.toLocaleString()}`;
 
@@ -355,6 +374,14 @@ export default function ProductDetailPage({ params }: { params: Params }) {
 
         {/* Customer Reviews */}
         <ReviewsSection />
+
+        {bundleProducts.length > 0 && (
+          <FrequentlyBoughtTogether
+            mainProduct={product}
+            bundleProducts={bundleProducts}
+            discountPercent={10}
+          />
+        )}
         </article>
 
         {/* Related */}

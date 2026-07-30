@@ -5,6 +5,7 @@ import { products, reviews, FREE_SHIPPING_THRESHOLD } from '@/lib/data';
 import { generateProductSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/schema';
 import AddToCartClient from './AddToCartClient';
 import FrequentlyBoughtTogether from '@/components/FrequentlyBoughtTogether';
+import ProductGallery from '@/components/ProductGallery';
 import Image from 'next/image';
 
 type Params = { slug: string };
@@ -260,30 +261,7 @@ export default function ProductDetailPage({ params }: { params: Params }) {
         <article className="grid md:grid-cols-2 gap-12" itemScope itemType="https://schema.org/Product">
           {/* Images */}
           <section>
-            <div className="rounded-xl overflow-hidden bg-white shadow mb-4">
-              <Image src={product.images[0] || product.image}
-                alt={`${product.name} — ${product.shortDescription}`}
-                className="w-full aspect-square object-cover"
-                itemProp="image"
-                width={600}
-                height={600}
-                priority
-                sizes="(max-width: 768px) 100vw, 600px" />
-            </div>
-            {product.images.length > 1 && (
-              <div className="flex gap-3" role="list">
-                {product.images.slice(1).map((img, i) => (
-                  <div key={i} role="listitem">
-                    <Image src={img}
-                      alt={`${product.name} — その他の画像${i + 2}枚目`}
-                      className="w-20 h-20 rounded-lg object-cover border-2 border-transparent"
-                      loading="lazy"
-                      width={80}
-                      height={80} />
-                  </div>
-                ))}
-              </div>
-            )}
+            <ProductGallery images={product.images.length > 0 ? product.images : [product.image]} name={product.name} shortDescription={product.shortDescription} />
           </section>
 
           {/* Info */}

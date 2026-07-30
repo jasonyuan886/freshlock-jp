@@ -18,8 +18,13 @@ export const products: Product[] = [
     image: '/images/products/sealer-main.jpg',
     images: [
       '/images/products/sealer-main.jpg',
-      '/images/products/sealer-use.jpg',
+      '/images/products/sealer-angled.jpg',
       '/images/products/sealer-kit.jpg',
+      '/images/products/sealer-detail-suction.jpg',
+      '/images/products/sealer-detail-usbc.jpg',
+      '/images/products/sealer-detail-cup.jpg',
+      '/images/products/sealer-detail-tube.jpg',
+      '/images/products/sealer-drain.jpg',
     ],
     features: [
       '-60kPa 吸引力で冷凍焼けをしっかり防止',
@@ -58,7 +63,17 @@ export const products: Product[] = [
     image: '/images/products/sealer-kit.jpg',
     images: [
       '/images/products/sealer-kit.jpg',
-      '/images/products/bags-1.jpg',
+      '/images/products/travel-kit.jpg',
+      '/images/products/sealer-main.jpg',
+      '/images/products/sealer-angled.jpg',
+      '/images/products/sealer-detail-suction.jpg',
+      '/images/products/sealer-detail-usbc.jpg',
+      '/images/products/sealer-detail-cup.jpg',
+      '/images/products/sealer-detail-tube.jpg',
+      '/images/products/sealer-drain.jpg',
+      '/images/products/bags-small.jpg',
+      '/images/products/bags-med.jpg',
+      '/images/products/bags-lrg.jpg',
     ],
     features: [
       'FreshLock Pro ハンディ真空ポンプ本体',

@@ -68,7 +68,7 @@ export default function CheckoutPage() {
           setError(data.error);
           setProcessing(false);
         } else {
-          alert('⚠️ 現在決済システムの準備中です。\nStripe API Keyが設定されるまではデモモードとなります。\n\nご注文は送信されました（デモ）。');
+          alert('⚠️ 現在決済システムの準備中です。\n決済システム準備中のためデモモードとなります。\n\nご注文は送信されました（デモ）。');
           clearCart();
           setProcessing(false);
         }

@@ -7,6 +7,9 @@ import { generateProductSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib
 import AddToCartClient from './AddToCartClient';
 import FrequentlyBoughtTogether from '@/components/FrequentlyBoughtTogether';
 import ProductGallery from '@/components/ProductGallery';
+import FomoLiveViewers from '@/components/FomoLiveViewers';
+import FomoStockIndicator from '@/components/FomoStockIndicator';
+import FomoCountdownTimer from '@/components/FomoCountdownTimer';
 import Image from 'next/image';
 
 type Params = { slug: string };
@@ -273,6 +276,10 @@ export default function ProductDetailPage({ params }: { params: Params }) {
               </span>
             )}
             <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4" itemProp="name">{product.name}</h1>
+
+            {/* FOMO: Live viewers */}
+            <FomoLiveViewers />
+
             <p className="text-3xl font-bold text-accent mb-6" itemProp="offers" itemScope itemType="https://schema.org/Offer">
               <meta itemProp="priceCurrency" content="JPY" />
               <meta itemProp="price" content={String(product.price)} />
@@ -280,6 +287,10 @@ export default function ProductDetailPage({ params }: { params: Params }) {
               {formatPrice(product.price)}{' '}
               <span className="text-sm text-gray-400 font-normal">（税込）</span>
             </p>
+
+            {/* FOMO: Stock indicator */}
+            <FomoStockIndicator initialStock={15} />
+
             <p className="text-gray-600 leading-relaxed mb-8" itemProp="description">{product.description}</p>
 
             {/* Features */}
@@ -296,6 +307,7 @@ export default function ProductDetailPage({ params }: { params: Params }) {
             </section>
 
             <div id="purchase">
+              <FomoCountdownTimer variant="pdp" />
               <AddToCartClient product={product} />
             </div>
 

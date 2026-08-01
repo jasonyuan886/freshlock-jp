@@ -4,6 +4,7 @@ import { getAllPosts } from '@/lib/blog';
 import { generateFAQSchema } from '@/lib/schema';
 import Image from 'next/image';
 import Script from 'next/script';
+import FomoCountdownTimer from '@/components/FomoCountdownTimer';
 
 const faqSchema = generateFAQSchema(faqs.slice(0, 3));
 

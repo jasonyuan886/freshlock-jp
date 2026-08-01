@@ -388,7 +388,7 @@ export default function ProductDetailPage({ params }: { params: Params }) {
                 >
                   <Image src={p.image}
                     alt={`${p.name} - ${p.shortDescription}`}
-                    className="w-32 h-32 object-cover"
+                    className="w-32 h-32 object-contain bg-stone-50"
                     width={128}
                     height={128}
                     loading="lazy" />

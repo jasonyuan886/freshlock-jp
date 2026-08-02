@@ -91,7 +91,7 @@ function AboutFreshLock() {
         </header>
         <article className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4">
           <p>
-            <strong>FreshLock（フレッシュロック）</strong>は、「毎日のキッチンをラクにしたい」という思いから生まれたコードレス式ハンディ真空ポンプです。日曜日にまとめて作り置きをする方、赤ちゃんの離乳食を小分け冷凍するママ、まとめ買いしたお肉や魚を美味しく長持ちさせたい方、キャンプやBBQで下味冷凍を持ち出したい方に選ばれています。
+            <strong>FreshLock（フレッシュロック）</strong>は、「毎日のキッチンをラクにしたい」という思いから生まれたコードレス式ハンディ真空ポンプです。日曜日にまとめて作り置きをする方、赤ちゃんの離乳食を小分け冷凍するママ、だしを取り置きする方、まとめ買いしたお肉や魚を美味しく長持ちさせたい方、キャンプやBBQで下味冷凍を持ち出したい方に選ばれています。
           </p>
           <p>
             据え置き型の大きな真空パック機と違い、FreshLock Proは片手でワンタッチで使える<strong>レバーが軽い</strong>設計。ヒートバー（熱溶着）は不要で、付属の<strong>着脱式ドリップトレイ</strong>が煮物・カレー・マリネ液などの水分をキャッチするので<strong>汁物対応</strong>、トレイは<strong>丸洗いOK</strong>です。
@@ -304,7 +304,7 @@ function HowItWorks() {
           {[
             { n: '1', t: '食材を袋に入れてチャックを閉じる', d: 'バルブ付きエンボス袋に食材を入れ、リンゴ緑のzip-sliderでダブルトラックチャックをしっかり閉じます。' },
             { n: '2', t: 'ノズルをバルブに当ててボタンを押す', d: '白い丸バルブにノズルを当て、電源ボタンをワンプッシュ。自動で空気を抜き取ります。' },
-            { n: '3', t: '冷蔵・冷凍・持ち出しOK', d: '片一方向弁が自動ロックして真空をキープ。冷凍焼けを防止し、作り置きも離乳食も長持ちします。' },
+            { n: '3', t: '冷蔵・冷凍・持ち出しOK', d: '片一方向弁が自動ロックして真空をキープ。冷凍焼けを防止し、作り置きも離乳食もおせちも長持ちします。' },
           ].map((s) => (
             <div key={s.n} className="text-center">
               <div className="w-14 h-14 rounded-full bg-primary text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">{s.n}</div>

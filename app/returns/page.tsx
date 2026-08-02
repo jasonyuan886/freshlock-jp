@@ -66,7 +66,7 @@ export default function ReturnsPage() {
           <section>
             <h2 className="text-2xl font-bold text-primary mb-3">7. 製品保証について</h2>
             <p className="text-gray-600 leading-relaxed">
-              FreshLock製品は製品ごとに1〜2年のメーカー保証が付いています。通常使用における材質・製造上の不具合については、保証期間内に限り無償修理または交換対応いたします。
+              FreshLock製品は製品ごとに1年のメーカー保証が付いています。通常使用における材質・製造上の不具合については、保証期間内に限り無償修理または交換対応いたします。
             </p>
           </section>
 

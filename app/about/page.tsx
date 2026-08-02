@@ -41,7 +41,7 @@ export default function AboutPage() {
         <div className="bg-gradient-to-br from-primary/5 to-accent/5 border border-primary/10 rounded-xl p-8 shadow-sm mb-8">
           <h2 className="text-2xl font-bold text-primary mb-4">深セン設計・世界で信頼される品質</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            FreshLockは<strong>深圳市七力科技有限公司（Shichiri Technology Co., Ltd.）</strong>によって設計・製造されています。深センは40年以上にわたり世界の家電・電子機器のサプライチェーンとエンジニアリングをリードしてきた「ハードウェアの首都」。何十年も国際ブランドのキッチン家電をOEM生産してきたチームが、中間マージンをカットしてダイレクトにお届けします。
+            FreshLockは<strong>深圳市七力科技有限公司（Qili Technology Co., Ltd.）</strong>によって設計・製造されています。深センは40年以上にわたり世界の家電・電子機器のサプライチェーンとエンジニアリングをリードしてきた「ハードウェアの首都」。何十年も国際ブランドのキッチン家電をOEM生産してきたチームが、中間マージンをカットしてダイレクトにお届けします。
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             日本に架空の住所やカスタマーセンターを設けるような見せかけはいたしません。本当の工場から、本当に良い製品を、適正な価格で。製品は全ロット出荷前に検品し、CE・RoHS・FCC認証済み、食品接触素材はBPAフリーです。
@@ -50,7 +50,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg p-4 border border-gray-100">
               <p className="font-semibold text-primary mb-1">🏭 販売業者</p>
               <p className="text-gray-600">深圳市七力科技有限公司</p>
-              <p className="text-gray-500 text-xs mt-1">Shichiri Technology Co., Ltd.</p>
+              <p className="text-gray-500 text-xs mt-1">Qili Technology Co., Ltd.</p>
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100">
               <p className="font-semibold text-primary mb-1">📍 所在地</p>

@@ -130,7 +130,7 @@ export default function AboutPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>
-              <span><strong>安心の1〜2年メーカー保証</strong> — 全製品は出荷前に検品済み。万が一の不具合にも日本語で丁寧に対応いたします。</span>
+              <span><strong>安心の1年メーカー保証</strong> — 全製品は出荷前に検品済み。万が一の不具合にも日本語で丁寧に対応いたします。</span>
             </li>
           </ul>
         </div>

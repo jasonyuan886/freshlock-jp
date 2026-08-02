@@ -25,7 +25,7 @@ export default function Footer() {
             <div className="flex items-start gap-2">
               <span className="text-lg">🛡️</span>
               <div>
-                <div className="font-semibold">本体2年保証</div>
+                <div className="font-semibold">本体1年保証</div>
                 <div className="text-gray-300 text-xs">付属品6ヶ月</div>
               </div>
             </div>
@@ -139,7 +139,7 @@ export default function Footer() {
 
           <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-700">
             <p className="text-xs text-gray-400">&copy; {new Date().getFullYear()} FreshLock / Shichiri Technology Co., Ltd. All rights reserved.</p>
-            <p className="text-xs text-gray-400 mt-2 md:mt-0">日本への国際配送・30日間返品保証・本体2年保証</p>
+            <p className="text-xs text-gray-400 mt-2 md:mt-0">日本への国際配送・30日間返品保証・本体1年保証</p>
           </div>
         </div>
       </div>

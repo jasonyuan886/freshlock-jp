@@ -128,7 +128,7 @@ export default function Footer() {
           {/* Tokutei short info */}
           <div className="bg-white/5 rounded-lg p-4 text-xs text-gray-300 space-y-1">
             <p className="font-semibold text-white mb-2">特定商取引法に基づく表記（概要）</p>
-            <p>販売業者：深圳市七力科技有限公司（Shichiri Technology Co., Ltd.）</p>
+            <p>販売業者：深圳市七力科技有限公司（Qili Technology Co., Ltd.）</p>
             <p>運営責任者：カスタマーサポート</p>
             <p>所在地：中国広東省深セン市（日本国内に住所・電話番号はございません。お問い合わせはメールにて jp-support@freshlocksealer.com へお願いいたします。）</p>
             <p>支払方法：PayPal（Visa/Mastercard/Amex/JCBはPayPal経由でご利用いただけます）</p>
@@ -138,7 +138,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-700">
-            <p className="text-xs text-gray-400">&copy; {new Date().getFullYear()} FreshLock / Shichiri Technology Co., Ltd. All rights reserved.</p>
+            <p className="text-xs text-gray-400">&copy; {new Date().getFullYear()} FreshLock / Qili Technology Co., Ltd. All rights reserved.</p>
             <p className="text-xs text-gray-400 mt-2 md:mt-0">日本への国際配送・30日間返品保証・本体1年保証</p>
           </div>
         </div>

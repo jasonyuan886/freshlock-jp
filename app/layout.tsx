@@ -10,7 +10,7 @@ import { generateOrganizationSchema, generateWebsiteSchema, SITE_URL } from '@/l
 const siteName = 'FreshLock Japan（フレッシュロック）';
 const title = 'FreshLock公式｜ハンディ真空ポンプで作り置き・小分け冷凍・冷凍焼け防止';
 const description =
-  'FreshLock（フレッシュロック）公式サイト。片手でワンタッチのコードレス式ハンディ真空ポンプ。-60kPa吸引力・USB-C充電・着脱式汁受けで汁物対応・専用袋不要・BPAフリー・音が静か。作り置き・離乳食の小分け冷凍・冷凍焼け防止に。¥5,500以上のご注文で全国送料無料、30日間返品保証、本体1年保証。';
+  'FreshLock（フレッシュロック）公式サイト。片手でワンタッチのコードレス式ハンディ真空ポンプ。-60kPa吸引力・USB-C充電・着脱式汁受けで汁物対応・専用袋不要・BPAフリー・音が静か。作り置き・離乳食の小分け冷凍・冷凍焼け防止に。¥5,500以上のご注文で全国送料無料、7日間返品保証、本体1年保証。';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

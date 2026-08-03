@@ -6,9 +6,9 @@ export default function ReturnsPage() {
       <div className="prose prose-lg max-w-none">
         <div className="bg-white rounded-xl p-8 shadow-sm space-y-6">
           <section>
-            <h2 className="text-2xl font-bold text-primary mb-3">1. 30日間返品保証</h2>
+            <h2 className="text-2xl font-bold text-primary mb-3">1. 7日間返品保証</h2>
             <p className="text-gray-600 leading-relaxed">
-              FreshLock Japanでは、商品到着後30日以内であれば、理由を問わず返品・交換を承ります。「思っていたのと違った」「使い方が合わなかった」といった場合でも、安心してお申し付けください。
+              FreshLock Japanでは、商品到着後7日以内であれば、理由を問わず返品・交換を承ります。「思っていたのと違った」「使い方が合わなかった」といった場合でも、安心してお申し付けください。
             </p>
           </section>
 
@@ -18,7 +18,7 @@ export default function ReturnsPage() {
               返品をご希望の場合は、以下の条件を満たしている必要があります：
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-600">
-              <li>商品到着後30日以内であること</li>
+              <li>商品到着後7日以内であること</li>
               <li>商品が未使用・元のパッケージの状態であること</li>
               <li>付属品（ケーブル・説明書等）がすべて揃っていること</li>
               <li>事前にメール（support@freshlocksealer.com）にてご連絡いただいていること</li>

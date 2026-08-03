@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="flex items-start gap-2">
               <span className="text-lg">🔄</span>
               <div>
-                <div className="font-semibold">30日間返品保証</div>
+                <div className="font-semibold">7日間返品保証</div>
                 <div className="text-gray-300 text-xs">未使用品は全額返金</div>
               </div>
             </div>
@@ -134,12 +134,12 @@ export default function Footer() {
             <p>支払方法：PayPal（Visa/Mastercard/Amex/JCBはPayPal経由でご利用いただけます）</p>
             <p>商品代金以外の必要料金：送料（全国一律¥600／¥5,500以上で無料）、沖縄・離島は別途お見積もり</p>
             <p>引渡時期：ご注文確定後1〜2営業日以内に発送、国際郵便（ヤマト提携）にて5〜10営業日でお届け</p>
-            <p>返品・交換：商品到着後30日間の返品保証。初期不良・破損は送料当社負担で交換。<Link href="/about#tokutei" className="underline hover:text-white">詳しくはこちら</Link></p>
+            <p>返品・交換：商品到着後7日間の返品保証。初期不良・破損は送料当社負担で交換。<Link href="/about#tokutei" className="underline hover:text-white">詳しくはこちら</Link></p>
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-700">
             <p className="text-xs text-gray-400">&copy; {new Date().getFullYear()} FreshLock / Qili Technology Co., Ltd. All rights reserved.</p>
-            <p className="text-xs text-gray-400 mt-2 md:mt-0">日本への国際配送・30日間返品保証・本体1年保証</p>
+            <p className="text-xs text-gray-400 mt-2 md:mt-0">日本への国際配送・7日間返品保証・本体1年保証</p>
           </div>
         </div>
       </div>

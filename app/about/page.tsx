@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'FreshLock（フレッシュロック）について｜ハンディ真空ポンプで食品ロス削減',
   description:
-    'FreshLock（フレッシュロック）は深セン発のキッチン家電ブランド。-60kPaのハンディ真空ポンプで冷凍焼けを防ぎ、食材を5倍長持ちさせます。BPAフリー・USB-C充電・日本語サポート・30日間返品保証。',
+    'FreshLock（フレッシュロック）は深セン発のキッチン家電ブランド。-60kPaのハンディ真空ポンプで冷凍焼けを防ぎ、食材を5倍長持ちさせます。BPAフリー・USB-C充電・日本語サポート・7日間返品保証。',
   alternates: {
     canonical: '/about',
     languages: {
@@ -118,7 +118,7 @@ export default function AboutPage() {
           <ul className="space-y-3 text-gray-600">
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>
-              <span><strong>30日間返品保証</strong> — ご満足いただけない場合は、全額返金いたします。</span>
+              <span><strong>7日間返品保証</strong> — ご満足いただけない場合は、全額返金いたします。</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-accent mt-1">✓</span>

@@ -148,12 +148,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       url,
       title: `${product.name} | FreshLock（フレッシュロック）公式`,
       description,
-      images: product.images.map((src) => ({
-        url: src,
-        width: 1200,
-        height: 630,
-        alt: product.name,
-      })),
+      images: [
+        {
+          url: product.image,
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',

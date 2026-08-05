@@ -127,7 +127,7 @@ export default function FrequentlyBoughtTogether({
               {added ? '✓ カートに追加しました' : adding ? '追加中...' : `${1 + selectedItems.length}点をまとめてカートに入れる`}
             </button>
             <p className="text-[11px] text-gray-500 text-center leading-tight">
-              ¥5,500以上で送料無料・30日間返品保証
+              ¥5,500以上で送料無料・7日間返品保証
             </p>
           </div>
         </div>

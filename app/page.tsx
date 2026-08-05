@@ -63,7 +63,7 @@ function Hero() {
             </div>
             <div className="mt-6 flex flex-wrap gap-4 text-sm text-gray-300">
               <span>🚚 ¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で送料無料</span>
-              <span>↩️ 30日間返品保証</span>
+              <span>↩️ 7日間返品保証</span>
               <span>🔒 SSL暗号化で安心決済</span>
             </div>
           </div>
@@ -231,7 +231,7 @@ function SocialProof() {
             ['4.7 ★', '平均ユーザー評価'],
             ['-60kPa', '吸引力'],
             ['送料無料', `¥${FREE_SHIPPING_THRESHOLD.toLocaleString()}以上のご注文`],
-            ['30日間', '返品保証'],
+            ['7日間', '返品保証'],
           ] as const).map(([stat, label]) => (
             <div key={label}>
               <p className="text-3xl font-bold text-accent">{stat}</p>

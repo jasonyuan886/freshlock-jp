@@ -43,14 +43,14 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <Image src="/logo-icon.png" alt="FreshLock" width={32} height={36} className="w-8 h-9" />
+              <Image src="/logo-icon.png" alt="FreshLock（フレッシュロック）ロゴ" width={32} height={36} className="w-8 h-9" />
               <span className="text-xl font-bold">FreshLock</span>
             </div>
             <p className="text-gray-300 text-sm mb-4">
               片手でワンタッチのコードレス式ハンディ真空ポンプ。作り置き・離乳食・小分け冷凍・冷凍焼け防止に。
             </p>
             <p className="text-gray-300 text-sm">
-              📧 <a href="mailto:jp-support@freshlocksealer.com" className="hover:text-white underline">jp-support@freshlocksealer.com</a>
+              📧 <a href="mailto:jp-support@freshlocksealer.com" className="hover:text-white underline" aria-label="メールでお問い合わせ: jp-support@freshlocksealer.com">jp-support@freshlocksealer.com</a>
             </p>
           </div>
 

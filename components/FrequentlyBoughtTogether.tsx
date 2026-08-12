@@ -75,7 +75,7 @@ export default function FrequentlyBoughtTogether({
               </div>
             </div>
 
-            {selectedItems.length > 0 && <span className="text-2xl text-gray-400 hidden sm:block self-center">+</span>}
+            {selectedItems.length > 0 && <span className="text-2xl text-gray-400 hidden sm:block self-center" aria-hidden="true">+</span>}
 
             {items.map((it, idx) => (
               <div key={it.product.slug} className="flex items-center gap-3">
@@ -123,6 +123,7 @@ export default function FrequentlyBoughtTogether({
               onClick={handleAddAll}
               disabled={adding || added}
               className="btn-primary w-full text-sm py-3 disabled:opacity-70"
+              aria-label={`${1 + selectedItems.length}点をまとめてカートに追加`}
             >
               {added ? '✓ カートに追加しました' : adding ? '追加中...' : `${1 + selectedItems.length}点をまとめてカートに入れる`}
             </button>

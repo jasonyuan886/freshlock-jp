@@ -53,6 +53,7 @@ export const products: Product[] = [
     },
     category: 'devices',
     badge: '新登場',
+    compareAtPrice: 10560,
   },
   {
     slug: 'freshlock-starter-kit',
@@ -90,6 +91,7 @@ export const products: Product[] = [
     },
     category: 'kits',
     badge: 'お買い得',
+    compareAtPrice: 12980,
   },
   {
     slug: 'vacuum-seal-bags-30-pack',
@@ -124,6 +126,7 @@ export const products: Product[] = [
       '冷凍対応': '可',
     },
     category: 'bags',
+    compareAtPrice: 3980,
   },
   {
     slug: 'vacuum-seal-bags-50-pack',
@@ -159,6 +162,7 @@ export const products: Product[] = [
     },
     category: 'bags',
     badge: '徳用パック',
+    compareAtPrice: 4980,
   },
 ];
 

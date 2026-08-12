@@ -10,6 +10,7 @@ export interface Product {
   specs: Record<string, string>;
   category: 'devices' | 'bags' | 'kits';
   badge?: string;
+  compareAtPrice?: number;
 }
 
 export interface CartItem {

@@ -16,9 +16,9 @@ type Params = { slug: string };
 
 function StarRating({ rating, size = 'text-base' }: { rating: number; size?: string }) {
   return (
-    <span className={size}>
-      {'★'.repeat(rating)}
-      <span className="text-gray-300">{'★'.repeat(5 - rating)}</span>
+    <span className={size} role="img" aria-label={`5段階中${rating}の評価`}>
+      <span aria-hidden="true">{'★'.repeat(rating)}</span>
+      <span className="text-gray-300" aria-hidden="true">{'★'.repeat(5 - rating)}</span>
     </span>
   );
 }
@@ -116,14 +116,19 @@ function ReviewsSection() {
   );
 }
 
-function StickyMobileATC({ productName, productPrice }: { productName: string; productPrice: string }) {
+function StickyMobileATC({ productName, productPrice, compareAtPrice }: { productName: string; productPrice: string; compareAtPrice?: number }) {
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40 px-4 py-3 flex items-center gap-3">
       <div className="flex-1 min-w-0">
         <div className="text-xs text-gray-500 truncate">{productName}</div>
-        <div className="text-accent font-bold">{productPrice}</div>
+        <div className="flex items-baseline gap-1">
+          {compareAtPrice && (
+            <span className="text-xs text-gray-400 line-through">¥{compareAtPrice.toLocaleString()}</span>
+          )}
+          <span className="text-accent font-bold">{productPrice}</span>
+        </div>
       </div>
-      <a href="#purchase" className="btn-primary text-sm px-5 py-2 whitespace-nowrap">
+      <a href="#purchase" className="btn-primary text-sm px-5 py-2 whitespace-nowrap" aria-label={`${productName}をカートに入れる`}>
         カートに入れる
       </a>
     </div>
@@ -282,13 +287,30 @@ export default function ProductDetailPage({ params }: { params: Params }) {
             {/* FOMO: Live viewers */}
             <FomoLiveViewers />
 
-            <p className="text-3xl font-bold text-accent mb-6" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+            <div className="mb-6" itemProp="offers" itemScope itemType="https://schema.org/Offer">
               <meta itemProp="priceCurrency" content="JPY" />
               <meta itemProp="price" content={String(product.price)} />
               <meta itemProp="availability" content="https://schema.org/InStock" />
-              {formatPrice(product.price)}{' '}
-              <span className="text-sm text-gray-400 font-normal">（税込）</span>
-            </p>
+              <div className="flex items-baseline gap-2 flex-wrap">
+                {product.compareAtPrice && product.compareAtPrice > product.price ? (
+                  <>
+                    <span className="text-lg text-gray-400 line-through" aria-label={`旧価格 ${formatPrice(product.compareAtPrice)}`}>
+                      {formatPrice(product.compareAtPrice)}
+                    </span>
+                    <span className="text-3xl font-bold text-accent">{formatPrice(product.price)}</span>
+                    <span className="text-sm text-gray-400 font-normal">（税込）</span>
+                    <span className="text-sm font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">
+                      {Math.round((1 - product.price / product.compareAtPrice) * 100)}%OFF
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-3xl font-bold text-accent">{formatPrice(product.price)}</span>
+                    <span className="text-sm text-gray-400 font-normal">（税込）</span>
+                  </>
+                )}
+              </div>
+            </div>
 
             {/* FOMO: Stock indicator */}
             <FomoStockIndicator initialStock={15} />
@@ -358,7 +380,7 @@ export default function ProductDetailPage({ params }: { params: Params }) {
             </section>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-500" aria-label="安心の保証">
+            <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-500" role="group" aria-label="安心の保証">
               <span>🚚 全国一律送料¥600（¥{FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で無料）</span>
               <span>↩️ 7日間返品保証</span>
               <span>🔒 安全なお支払い</span>
@@ -396,7 +418,12 @@ export default function ProductDetailPage({ params }: { params: Params }) {
                     loading="lazy" />
                   <div className="p-4">
                     <h3 className="font-bold text-primary mb-1">{p.name}</h3>
+                    <div className="flex items-baseline gap-1">
+                    {p.compareAtPrice && p.compareAtPrice > p.price && (
+                      <span className="text-xs text-gray-400 line-through">¥{p.compareAtPrice.toLocaleString()}</span>
+                    )}
                     <p className="text-accent font-bold">¥{p.price.toLocaleString()}（税込）</p>
+                  </div>
                   </div>
                 </Link>
               ))}
@@ -404,7 +431,7 @@ export default function ProductDetailPage({ params }: { params: Params }) {
           </section>
         )}
       </div>
-      <StickyMobileATC productName={product.name} productPrice={formatPrice(product.price)} />
+      <StickyMobileATC productName={product.name} productPrice={formatPrice(product.price)} compareAtPrice={product.compareAtPrice} />
       <div className="md:hidden h-20" />
     </>
   );

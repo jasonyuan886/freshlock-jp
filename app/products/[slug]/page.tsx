@@ -144,7 +144,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!product) return {};
   const url = `${SITE_URL}/products/${product.slug}`;
   const title = product.name;
-  const description = product.shortDescription + ` ¥${FREE_SHIPPING_THRESHOLD.toLocaleString()}以上で全国送料無料、7日間返品保証。`;
+  const description = product.shortDescription + ` 7日間返品保証、本体1年保証。`;
   return {
     title,
     description,

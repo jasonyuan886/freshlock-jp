@@ -1,14 +1,9 @@
 import { Metadata } from 'next';
-import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://jp.freshlocksealer.com/shipping',
   },
-};
-
-
-export const metadata: Metadata = {
   title: '配送ポリシー | FreshLock Japan',
   description: 'FreshLockの配送ポリシー。ハンディ真空パック機・真空パック袋のお届け日数・送料・配送エリアについて。',
 };

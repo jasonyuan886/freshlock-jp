@@ -1,4 +1,12 @@
 import { Metadata } from 'next';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://jp.freshlocksealer.com/shipping',
+  },
+};
+
 
 export const metadata: Metadata = {
   title: '配送ポリシー | FreshLock Japan',

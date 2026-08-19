@@ -164,12 +164,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <head>
 
-        <link rel="alternate" hrefLang="ja-JP" href="https://jp.freshlocksealer.com" />
-
-        <link rel="alternate" hrefLang="en-US" href="https://www.freshlocksealer.com" />
-
-        <link rel="alternate" hrefLang="x-default" href="https://www.freshlocksealer.com" />
-
+        
+        
+        
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-N16R0F2B1Y" strategy="afterInteractive" />
 
         <Script id="ga4-init" strategy="afterInteractive">

@@ -5,14 +5,11 @@ import { useCart } from '@/lib/cart-context';
 import { FREE_SHIPPING_THRESHOLD, SHIPPING_FEE, products } from '@/lib/data';
 import Image from 'next/image';
 import { useMemo } from 'react';
-import type { Metadata } from 'next';
-
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://jp.freshlocksealer.com/cart',
   },
 };
-
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, totalPrice, addToCart } = useCart();

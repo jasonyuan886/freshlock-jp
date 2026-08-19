@@ -63,6 +63,7 @@ export const metadata: Metadata = {
 
       'en-US': 'https://www.freshlocksealer.com',
 
+      'th-TH': 'https://th.freshlocksealer.com',
       'x-default': 'https://www.freshlocksealer.com',
 
     },

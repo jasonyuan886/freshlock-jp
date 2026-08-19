@@ -54,21 +54,7 @@ export const metadata: Metadata = {
 
   },
 
-  alternates: {
-
-
-    languages: {
-
-      'ja-JP': 'https://jp.freshlocksealer.com',
-
-      'en-US': 'https://www.freshlocksealer.com',
-
-      'th-TH': 'https://th.freshlocksealer.com',
-      'x-default': 'https://www.freshlocksealer.com',
-
-    },
-
-  },
+  alternates: {},
 
   openGraph: {
 
@@ -167,6 +153,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         
         
         
+                <link rel="alternate" hrefLang="ja-JP" href="https://jp.freshlocksealer.com" />
+        <link rel="alternate" hrefLang="en-US" href="https://www.freshlocksealer.com" />
+        <link rel="alternate" hrefLang="th-TH" href="https://th.freshlocksealer.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.freshlocksealer.com" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-N16R0F2B1Y" strategy="afterInteractive" />
 
         <Script id="ga4-init" strategy="afterInteractive">

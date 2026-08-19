@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://jp.freshlocksealer.com/cart' },
   title: 'ショッピングカート',
   description:
     'FreshLockのカート内容をご確認ください。¥5,500以上で全国送料無料、30日間返品保証、本体2年保証。',

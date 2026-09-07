@@ -108,7 +108,7 @@ FreshLock Pro の1200mAhバッテリーは1充電あたり80〜100回密封。�
 
 ## あわせて読む
 
-- [「スナップシール フレッシュロックミニ」は実在する？](/blog/snap-seal-freshlock-mini-jitsuzai)
-- [2026年ベストハンディ真空パック機：本当に重要な5つのポイント](/blog/best-handheld-vacuum-sealer-2026-jp)
-- [真空パック袋の選び方：完全ガイド](/blog/choosing-vacuum-sealer-bags-complete-guide)
-- [ハンディ vs 据え置き 真空パック機：どちらがあなたに合う？](/blog/handheld-vs-countertop-vacuum-sealer)
+- [「スナップシール フレッシュロックミニ」は実在する？](/blog/2026-09-02-snap-seal-freshlock-mini-jitsuzai)
+- [2026年ベストハンディ真空パック機：本当に重要な5つのポイント](/blog/2026-09-02-best-handheld-vacuum-sealer-2026-jp)
+- 真空パック袋の選び方：完全ガイド
+- ハンディ vs 据え置き 真空パック機：どちらがあなたに合う？

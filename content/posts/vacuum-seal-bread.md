@@ -195,4 +195,4 @@ keywords:
 
 ---
 
-*この記事が参考になったら、[肉の保存方法比較ガイド](/blog/vacuum-sealer-for-meat)や[Sous Videに真空密封が不可欠な理由](/blog/sous-vide-and-vacuum-sealing)もぜひご覧ください。*
+*この記事が参考になったら、肉の保存方法比較ガイドや[Sous Videに真空密封が不可欠な理由](/blog/sous-vide-and-vacuum-sealing)もぜひご覧ください。*

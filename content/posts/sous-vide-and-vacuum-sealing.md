@@ -258,4 +258,4 @@ Sous Vide料理は革命的です。スキルの有無に関わらず、完璧�
 
 ---
 
-*もっと知りたい方は、[パンを潰さずに真空密封する方法](/blog/vacuum-seal-bread)（Meal Prepに最適）や[肉の保存方法比較](/blog/vacuum-sealer-for-meat)もぜひご覧ください。*
+*もっと知りたい方は、[パンを潰さずに真空密封する方法](/blog/vacuum-seal-bread)（Meal Prepに最適）や肉の保存方法比較もぜひご覧ください。*

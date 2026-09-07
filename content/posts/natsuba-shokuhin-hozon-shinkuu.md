@@ -106,6 +106,6 @@ tags: ["夏", "食品保存", "真空パック", "食中毒"]
 特に刺身・鶏肉・葉物野菜は、真空パックで3〜5倍長持ち。夏の食品ロスを減らして、節約しながら安全に食べましょう。
 
 **関連記事：**
-- [真空パックで食品ロスを減らす方法](/blog/shinkuu-pack-shokuhi-setsuyaku)
+- 真空パックで食品ロスを減らす方法
 - [作り置き真空保存テク](/blog/zangyou-tsukurioki-shinkuu)
 - [野菜の冷凍保存比較](/blog/yasai-reitou-shinkuu-hikaku)

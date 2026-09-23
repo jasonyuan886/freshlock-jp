@@ -7,6 +7,11 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+// 記事個別のアイキャッチ画像はまだ無いため、当面は共通の製品画像を使う。
+// 画像が無いと BlogPosting のリッチリザルト対象外になり、SNS 共有時にも
+// プレビューが出ない（JP サイトは流入の98%が自然検索なので、ここは効く）。
+const OG_IMAGE = 'https://jp.freshlocksealer.com/images/products/sealer-main.jpg';
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map(p => ({ slug: p.slug }));
@@ -19,12 +24,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.description,
+    // hreflang は日本語版の自己参照のみにする。
+    // 以前は en-US / th-TH を「同じ slug が英語版・タイ語版にも存在する」前提で
+    // 出力していたが、3サイトの slug 体系は独立しており、実測すると
+    // **JP の全41記事について EN/TH 側は 404**（2026-09-22 確認。
+    // vacuum-seal-bread のような英語形 slug も含め、一致は1件も無し）。
+    // 到達しない hreflang は「無意味」ではなく有害で、相互参照が取れない
+    // クラスタは Google に破棄され、存在しない URL を繰り返しクロールさせる。
+    // 翻訳対応表が無い以上、自己参照と x-default だけを残すのが正しい。
+    // 将来 EN/TH と記事を対応付けるなら、記事ごとの明示的なマッピングを持つこと
+    // （slug の一致に依存させない）。
     alternates: {
       canonical: `/blog/${slug}`,
       languages: {
-        'en-US': `https://www.freshlocksealer.com/blog/${slug}`,
         'ja-JP': `https://jp.freshlocksealer.com/blog/${slug}`,
-        'th-TH': `https://th.freshlocksealer.com/blog/${slug}`,
         'x-default': `https://jp.freshlocksealer.com/blog/${slug}`,
       },
     },
@@ -34,6 +47,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
+      url: `https://jp.freshlocksealer.com/blog/${slug}`,
+      siteName: 'FreshLock Japan',
+      images: [{ url: OG_IMAGE, width: 1200, height: 1200, alt: 'FreshLock ハンディ真空パック機' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: [OG_IMAGE],
     },
   };
 }
@@ -51,6 +73,11 @@ export default async function BlogPostPage({ params }: PageProps) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    dateModified: post.date,
+    // image はリッチリザルトの必須項目。欠けていると Article 系の
+    // リッチリザルト対象外になる（2026-09-22 実測で欠落を確認）。
+    image: [OG_IMAGE],
+    inLanguage: 'ja-JP',
     author: { '@type': 'Organization', name: post.author },
     publisher: {
       '@type': 'Organization',

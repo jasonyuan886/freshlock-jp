@@ -118,6 +118,13 @@ export function generateOrganizationSchema() {
     name: 'FreshLock Japan（運営：深圳市七力科技有限公司 / Shichiri Technology Co., Ltd.）',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
+    sameAs: [
+      'https://www.youtube.com/@FreshLocksealer',
+      'https://www.tiktok.com/@freshlocksealer',
+      'https://www.instagram.com/freshlocksea',
+      'https://www.pinterest.com/freshlocksealer/',
+      'https://www.facebook.com/people/FreshLock/1000',
+    ],
     description:
       'FreshLock（フレッシュロック）は、片手でワンタッチで使えるコードレス式ハンディ真空ポンプ。-60kPaの吸引力で冷凍焼けを防止し、作り置き・離乳食の小分け冷凍・汁物対応・専用袋不要で毎日のキッチンを快適にします。',
     email: 'jp-support@freshlocksealer.com',

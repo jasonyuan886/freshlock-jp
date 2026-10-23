@@ -54,7 +54,7 @@ export default function AboutPage() {
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100">
               <p className="font-semibold text-primary mb-1">📍 所在地</p>
-              <p className="text-gray-600 text-xs">中国広東省深セン市龍華区大浪街道創芸路安宏基工業園C棟3階</p>
+              <p className="text-gray-600 text-xs">中国広東省深圳市龍華区福城街道鑫源工業園C棟2階（龙华区福城街道鑫源工业园C栋2楼）</p>
               <p className="text-gray-500 text-xs mt-1">日本国内に住所・電話番号はございません。お問い合わせはメールにて承ります。</p>
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100">

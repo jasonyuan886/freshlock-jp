@@ -54,7 +54,7 @@ export default function AboutPage() {
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100">
               <p className="font-semibold text-primary mb-1">📍 所在地</p>
-              <p className="text-gray-600 text-xs">中国広東省深圳市龍華区福城街道鑫源工業園C棟2階（龙华区福城街道鑫源工业园C栋2楼）</p>
+              <p className="text-gray-600 text-xs">中国広東省深圳市龍華区大浪街道創芸路安宏基工業園C棟3階（龙华区大浪街道创艺路安宏基工业园C栋3楼）</p>
               <p className="text-gray-500 text-xs mt-1">日本国内に住所はございません。お問い合わせはメール（jp-support@freshlocksealer.com）が確実です。</p>
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100">
@@ -62,6 +62,9 @@ export default function AboutPage() {
               <p className="text-gray-600 text-xs">+86 180-2875-3746</p>
               <p className="text-gray-500 text-xs mt-1">中国発信のため、国際電話より jp-support@freshlocksealer.com（24時間）を推奨</p>
             </div>
+            <div className="bg-white rounded-lg p-4 border border-gray-100">
+              <p className="font-semibold text-primary mb-1">🏢 事務所（連絡先住所）</p>
+              <p className="text-gray-600 text-xs">中国広東省深圳市龍華区福城街道鑫源工業園C棟2階（龙华区福城街道鑫源工业园C栋2楼）</p></div>
             <div className="bg-white rounded-lg p-4 border border-gray-100">
               <p className="font-semibold text-primary mb-1">📧 カスタマーサポート</p>
               <p className="text-gray-600"><a href="mailto:jp-support@freshlocksealer.com" className="text-accent hover:underline">jp-support@freshlocksealer.com</a></p>

@@ -58,6 +58,11 @@ export default function AboutPage() {
               <p className="text-gray-500 text-xs mt-1">日本国内に住所はございません。お問い合わせはメール（jp-support@freshlocksealer.com）が確実です。。お問い合わせはメールにて承ります。</p>
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100">
+              <p className="font-semibold text-primary mb-1">📞 電話番号</p>
+              <p className="text-gray-600 text-xs">+86 180-2875-3746</p>
+              <p className="text-gray-500 text-xs mt-1">中国発信のため、国際電話より jp-support@freshlocksealer.com（24時間）を推奨</p>
+            </div>
+            <div className="bg-white rounded-lg p-4 border border-gray-100">
               <p className="font-semibold text-primary mb-1">📧 カスタマーサポート</p>
               <p className="text-gray-600"><a href="mailto:jp-support@freshlocksealer.com" className="text-accent hover:underline">jp-support@freshlocksealer.com</a></p>
               <p className="text-gray-500 text-xs mt-1">平日24時間以内に日本語でご返信</p>

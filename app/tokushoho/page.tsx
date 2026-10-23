@@ -3,7 +3,7 @@ export default function TokushohoPage() {
     ['販売業者名', '深圳市七力科技有限公司（Shenzhen Qili Technology Co., Ltd.）'],
     ['運営責任者', '公孙離（こうそんり / Gongsun Li）'],
     ['所在地', '中国 広東省深圳市龍華区福城街道鑫源工業園C棟2階（龙华区福城街道鑫源工业园C栋2楼）'],
-    ['電話番号', '日本国内に電話番号はございません。お問い合わせは jp-support@freshlocksealer.com（24時間）'],
+    ['電話番号', '+86 180-2875-3746（中国発信。国際電話より jp-support@freshlocksealer.com 推奨）'],
     ['メール', 'jp-support@freshlocksealer.com（24時間受付）'],
     ['商品代金以外の必要料金', '送料：全国一律 ¥600（税込）／¥5,500（税込）以上のご注文で送料無料'],
     ['支払方法', 'PayPal（クレジットカード決済対応）'],

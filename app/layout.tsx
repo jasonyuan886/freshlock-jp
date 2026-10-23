@@ -8,7 +8,6 @@ import Header from '@/components/Header';
 
 import Footer from '@/components/Footer';
 
-import FomoPurchaseNotification from '@/components/FomoPurchaseNotification';
 
 import { CartProvider } from '@/lib/cart-context';
 

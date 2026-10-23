@@ -198,7 +198,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
 
 <div className="w-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white text-center py-2.5 px-4 font-bold text-sm md:text-base tracking-wide sticky top-0 z-50 shadow-lg">
-            🎊 新発売記念セール：FreshLock Pro <span className="line-through opacity-80">¥8,980</span> → <span className="text-yellow-200 text-lg">¥6,980</span>（22% OFF）｜期間限定・在庫なくなり次第終了
+            🎊 新発売記念セール：FreshLock Pro <span className="line-through opacity-80">¥8,980</span> → <span className="text-yellow-200 text-lg">¥6,980</span>（22% OFF）｜11月末まで
           </div>
           <Header />
 
@@ -206,7 +206,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <Footer />
 
-          <FomoPurchaseNotification />
 
         </CartProvider>
 

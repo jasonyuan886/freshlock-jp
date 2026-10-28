@@ -27,6 +27,7 @@ function extractFaq(html: string): { q: string; a: string }[] | null {
   return items.length >= 2 ? items : null;
 }
 
+// build-trigger 20261028
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map(p => ({ slug: p.slug }));

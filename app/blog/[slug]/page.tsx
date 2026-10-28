@@ -17,7 +17,7 @@ function extractFaq(html: string): { q: string; a: string }[] | null {
   if (parts.length < 2) return null;
   const section = parts[1].split(/<h2[^>]*>/i)[0];
   const items: { q: string; a: string }[] = [];
-  const re = /<p><strong[^>]*>([^<]+)<\/strong><\/p>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
+  const re = /<p[^>]*><strong[^>]*>([^<]+)<\/strong><\/p>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
   let m;
   while ((m = re.exec(section)) !== null) {
     const q = m[1].trim();

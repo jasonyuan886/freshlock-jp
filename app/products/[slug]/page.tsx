@@ -330,6 +330,12 @@ export default function ProductDetailPage({ params }: { params: Params }) {
               </ul>
             </section>
 
+            {/* 2026-10-28 ROI anchor (JP, same conv-diag as EN) */}
+            <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 my-4">
+              <p className="text-emerald-900 font-semibold text-sm">約2〜4ヶ月で元が取れます。</p>
+              <p className="text-emerald-800 text-xs mt-1 leading-relaxed">一人暮らしでも年間約4万円の食品を捨てている計算です。真空パックでその多くを防げば、この1台の出費は数ヶ月で黒字になります。</p>
+            </div>
+
             <div id="purchase">
               <FomoCountdownTimer variant="pdp" />
               <AddToCartClient product={product} />

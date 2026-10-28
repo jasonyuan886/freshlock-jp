@@ -336,6 +336,13 @@ export default function ProductDetailPage({ params }: { params: Params }) {
               <p className="text-emerald-800 text-xs mt-1 leading-relaxed">一人暮らしでも年間約4万円の食品を捨てている計算です。真空パックでその多くを防げば、この1台の出費は数ヶ月で黒字になります。</p>
             </div>
 
+            {/* 2026-10-28 JP trust row: accurate terms verified from /shipping and /returns (7-day returns, intl shipping 5-10 biz days) */}
+            <div className="flex flex-wrap gap-x-4 gap-y-1 my-3 text-xs text-gray-700">
+              <span>✓ ¥5,500以上で送料無料</span>
+              <span>✓ 到着後7日間の返品保証</span>
+              <span>✓ 1年保証</span>
+            </div>
+
             <div id="purchase">
               <FomoCountdownTimer variant="pdp" />
               <AddToCartClient product={product} />

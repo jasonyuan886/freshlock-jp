@@ -7,7 +7,7 @@ const FEED_META: Record<string, { title: string; desc: string; mpn: string; prod
     "title": "FreshLock Pro ハンディ真空ポンプ — コードレス・USB-C充電・-60kPa",
     "desc": "片手でワンタッチ操作のコードレス式ハンディ真空ポンプ。-60kPaの吸引力で数秒で空気を抜き、冷凍焼けを防止。着脱式ドリップトレイで汁物対応・丸洗いOK。専用袋不要で市販のエンボス加工バルブ付き袋に対応。USB-C充電・1200mAh・80〜100回使用可能。約210g軽量・BPAフリー。",
     "mpn": "FL-PRO-001",
-    "ptype": "真空ポンプ",
+    "productType": "真空ポンプ",
     "images": [
       "https://jp.freshlocksealer.com/images/products/sealer-angled.jpg",
       "https://jp.freshlocksealer.com/images/products/sealer-kit.jpg",
@@ -18,7 +18,7 @@ const FEED_META: Record<string, { title: string; desc: string; mpn: string; prod
     "title": "FreshLock スターターキット — Pro本体+真空袋30枚",
     "desc": "FreshLock Pro本体にプレミアムエンボスバッグ30枚（小10・中10・大10）とUSB-Cケーブルをセット。箱を開けてすぐに真空保存が始められる。コードレス・USB-C充電・-60kPa吸引。単品合計より¥980おトク。送料無料。",
     "mpn": "FL-KIT-001",
-    "ptype": "真空ポンプセット",
+    "productType": "真空ポンプセット",
     "images": [
       "https://jp.freshlocksealer.com/images/products/sealer-main.jpg",
       "https://jp.freshlocksealer.com/images/products/sealer-box-angle.jpg"
@@ -28,7 +28,7 @@ const FEED_META: Record<string, { title: string; desc: string; mpn: string; prod
     "title": "プレミアムエンボスバッグ 30枚入り（中サイズ26×28cm）— BPAフリー・繰り返し使用可",
     "desc": "90μm厚PA+PE多層エンボスバッグ30枚。白い丸い片一方向バルブ+リンゴ緑zip-slider採用。BPAフリー・-20℃〜100℃対応・冷凍・湯せんOK。繰り返し使用可。ほとんどのバルブ式ハンディポンプに対応。",
     "mpn": "FL-BAG-M30",
-    "ptype": "真空保存袋",
+    "productType": "真空保存袋",
     "images": [
       "https://jp.freshlocksealer.com/images/products/bags-2.jpg"
     ]
@@ -37,7 +37,7 @@ const FEED_META: Record<string, { title: string; desc: string; mpn: string; prod
     "title": "プレミアムエンボスバッグ 50枚入り（大サイズ26×34cm・徳用）— BPAフリー・繰り返し使用可",
     "desc": "大サイズ（26×34cm）50枚入り徳用パック。90μm厚PA+PE多層エンボス・白丸バルブ+zip-slider。家族分・まとめ買い・低温調理（スーヴィード）に。BPAフリー・-20℃〜100℃対応・繰り返し使用可。1枚あたり最安値。",
     "mpn": "FL-BAG-L50",
-    "ptype": "真空保存袋",
+    "productType": "真空保存袋",
     "images": [
       "https://jp.freshlocksealer.com/images/products/bags-5.jpg"
     ]

@@ -127,6 +127,13 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
+                <span className="text-2xl">💬</span>
+                <div>
+                  <p className="font-medium">WhatsApp</p>
+                  <p className="text-gray-600"><a href="https://wa.me/8618316990301" className="underline hover:text-primary" aria-label="WhatsAppでお問い合わせ">+86 183 1699 0301</a><br />年中無休・最速でご返信いたします</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
                 <span className="text-2xl">⏱️</span>
                 <div>
                   <p className="font-medium">対応時間</p>

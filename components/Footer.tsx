@@ -52,6 +52,9 @@ export default function Footer() {
             <p className="text-gray-300 text-sm">
               📧 <a href="mailto:jp-support@freshlocksealer.com" className="hover:text-white underline" aria-label="メールでお問い合わせ: jp-support@freshlocksealer.com">jp-support@freshlocksealer.com</a>
             </p>
+            <p className="text-gray-300 text-sm mt-2">
+              💬 WhatsApp: <a href="https://wa.me/8618316990301" className="hover:text-white underline" aria-label="WhatsAppでお問い合わせ: +86 183 1699 0301">+86 183 1699 0301</a>
+            </p>
           </div>
 
           {/* Shop */}

@@ -1,27 +1,22 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
 
-const SITE_URL = 'https://jp.freshlocksealer.com'
+const EN_BASE = 'https://www.freshlocksealer.com';
+const SHARED_EXACT = new Set(['/', '/contact', '/shipping', '/returns', '/faq', '/about', '/privacy', '/terms', '/cart']);
+const SHARED_PRODUCTS = new Set(['/products/freshlock-pro', '/products/freshlock-starter-kit', '/products/vacuum-seal-bags-30-pack', '/products/vacuum-seal-bags-50-pack']);
 
-export async function middleware(request: NextRequest) {
-  const url = request.nextUrl
-  
-  if (url.pathname.startsWith('/_next') || 
-      url.pathname.includes('.') ||
-      url.pathname.startsWith('/api')) {
-    return NextResponse.next()
-  }
+export function middleware(req: NextRequest) {
+  const res = NextResponse.next();
+  const path = req.nextUrl.pathname;
 
-  const path = url.pathname === '/' ? '' : url.pathname
-  const canonical = `${SITE_URL}${path}`
+  const enPath = SHARED_EXACT.has(path) || SHARED_PRODUCTS.has(path) ? path : null;
+  const self = `https://jp.freshlocksealer.com${path}`;
+  const links = [`<${self}>; rel="alternate"; hreflang="en"`, `<${self}>; rel="alternate"; hreflang="x-default"`];
+  if (enPath) links.push(`<${EN_BASE}${enPath}>; rel="alternate"; hreflang="en"`);
+  res.headers.set('Link', links.join(', '));
 
-  const response = NextResponse.next()
-  response.headers.set('x-canonical-url', canonical)
-  response.headers.set('x-middleware-ran', 'true')
-
-  return response
+  return res;
 }
 
 export const config = {
-  matcher: ['/((?!_next|favicon|images|logo|api).*)'],
-}
+  matcher: ['/((?!api|_next|favicon.ico|robots.txt|sitemap.xml|llms.txt|google-shopping-feed.xml).*)'],
+};

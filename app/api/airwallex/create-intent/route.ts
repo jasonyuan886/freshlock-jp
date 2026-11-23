@@ -66,7 +66,7 @@ export async function POST(request: Request) {
       });
     } catch (err: any) {
       console.error('jp create-intent error:', err?.message || err);
-      return NextResponse.json({ error: '決済の準備に失敗しました。時間をおいて再度お試しください。' }, { status: 502 });
+      return NextResponse.json({ error: '決済の準備に失敗しました。時間をおいて再度お試しください。', detail: String(err?.message || err).slice(0, 260) }, { status: 502 });
     }
 
     const record = {

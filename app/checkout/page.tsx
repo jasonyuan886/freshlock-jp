@@ -103,6 +103,44 @@ export default function CheckoutPage() {
           alert('⚠️ PayPalの設定が完了していません。\n.env.localにPayPal API認証情報を設定後にご利用ください。');
           setProcessing(false);
         }
+      } else if (paymentMethod === 'airwallex') {
+        const res = await fetch('/api/airwallex/create-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: items.map(item => ({ slug: item.product.slug, quantity: item.quantity })),
+            customer: { email: form.email, lastName: form.lastName, firstName: form.firstName, phone: form.phone },
+            shippingAddress: {
+              name: `${form.lastName} ${form.firstName}`,
+              address: `${form.prefecture} ${form.city} ${form.address1} ${form.address2}`,
+              postalCode: form.postal,
+              country: 'JP',
+            },
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          setError(data.error || '決済の準備に失敗しました。時間をおいて再度お試しください。');
+          setProcessing(false);
+          return;
+        }
+        try {
+          const sdk = await import('@airwallex/components-sdk');
+          const { payments } = await sdk.init({ env: 'prod', enabledElements: ['payments'] });
+          await payments.redirectToCheckout({
+            env: 'prod',
+            mode: 'payment',
+            intent_id: data.intent_id,
+            client_secret: data.client_secret,
+            currency: 'JPY',
+            country_code: 'JP',
+            successUrl: `https://jp.freshlocksealer.com/checkout/success?payment_method=airwallex&order_number=${encodeURIComponent(data.order_number)}`,
+          } as any);
+        } catch (e) {
+          console.error('jp redirect error:', e);
+          setError('決済ページを開けませんでした。もう一度お試しください。');
+          setProcessing(false);
+        }
       } else if (paymentMethod === 'cod') {
         alert('⚠️ 代金引換は現在準備中です。');
         setProcessing(false);
@@ -303,6 +341,25 @@ export default function CheckoutPage() {
                       <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-medium">🛡️ 買い手保護</span>
                     </div>
                     <p className="text-xs text-gray-600 mt-1">PayPalアカウント、またはゲストとしてVisa・Mastercard・Amex・JCBで安全にお支払いいただけます。<strong className="text-[#003087]">対象となるご購入はPayPal買い手保護制度の対象です。</strong></p>
+                  </div>
+                </label>
+
+                <label className="flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition border-gray-200 hover:bg-gray-50">
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="airwallex"
+                    checked={paymentMethod === 'airwallex'}
+                    onChange={(e) => setPaymentMethod(e.target.value)}
+                    className="accent-[#0f4c3a] mt-1"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="inline-flex items-center font-bold text-white bg-[#0f4c3a] px-2 py-0.5 rounded text-sm tracking-wide">クレジットカード</span>
+                      <span className="inline-flex items-center text-xs font-semibold text-gray-700 border border-gray-300 rounded px-2 py-0.5">G Pay</span>
+                      <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-medium">アカウント不要</span>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-1">Visa / Mastercard / JCB / AMEX / Google Pay。PayPalアカウント不要、そのままカード番号でお支払いいただけます。</p>
                   </div>
                 </label>
                 {/* 代金引換・PayPay・コンビニは準備中のためUI非表示

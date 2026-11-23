@@ -22,6 +22,7 @@ export default function CheckoutPage() {
   const total = totalPrice + shipping;
 
   const [paymentMethod, setPaymentMethod] = useState('paypal');
+  const [cartCaptured, setCartCaptured] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState('');
 
@@ -42,6 +43,20 @@ export default function CheckoutPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleEmailBlur = () => {
+    if (cartCaptured || !form.email || items.length === 0) return;
+    setCartCaptured(true);
+    fetch('/api/abandoned-cart', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: form.email,
+        cartItems: items,
+        cartTotal: items.reduce((s: number, it: any) => s + (it.product?.price ?? 0) * (it.quantity ?? 1), 0),
+      }),
+    }).catch(() => {});
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -213,6 +228,7 @@ export default function CheckoutPage() {
                     required
                     placeholder="example@email.com"
                     className="w-full border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  onBlur={handleEmailBlur}
                   />
                 </div>
                 <div className="sm:col-span-2">

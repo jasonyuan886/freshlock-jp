@@ -8,12 +8,29 @@ import { useCart } from '@/lib/cart-context';
 function CheckoutSuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
+  const paymentMethodSp = searchParams.get('payment_method');
+  const orderNumberSp = searchParams.get('order_number');
   const [orderInfo, setOrderInfo] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const { clearCart } = useCart();
 
   useEffect(() => {
-    if (sessionId) {
+    if (paymentMethodSp === 'airwallex' && orderNumberSp) {
+      let tries = 0;
+      const poll = async () => {
+        try {
+          const r = await fetch(`/api/airwallex/status?order_number=${encodeURIComponent(orderNumberSp)}`);
+          const d = await r.json();
+          if (d?.paid) {
+            setOrderInfo({ customer_email: d.customer_email, amount_total: d.amount_total, success: true });
+            clearCart();
+            return;
+          }
+        } catch {}
+        if (++tries < 15) setTimeout(poll, 3000); else setLoading(false);
+      };
+      poll();
+    } else if (sessionId) {
       fetch(`/api/checkout/success?session_id=${sessionId}`)
         .then((res) => res.json())
         .then((data) => {
@@ -27,7 +44,7 @@ function CheckoutSuccessContent() {
     } else {
       setLoading(false);
     }
-  }, [sessionId, clearCart]);
+  }, [sessionId, clearCart, paymentMethodSp, orderNumberSp]);
 
   if (loading) {
     return (

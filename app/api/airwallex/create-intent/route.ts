@@ -52,7 +52,8 @@ export async function POST(request: Request) {
     const phone = (body?.customer?.phone || '').toString().trim().slice(0, 40);
 
     const orderNumber = generateJpOrderNumber();
-    const returnUrl = `https://jp.freshlocksealer.com/checkout/success?payment_method=airwallex&order_number=${encodeURIComponent(orderNumber)}`;
+    // 诊断/灰度用：允许请求体覆盖 return_url（默认 JP 成功页）
+    const returnUrl = (body?.returnUrl || `https://jp.freshlocksealer.com/checkout/success?payment_method=airwallex&order_number=${encodeURIComponent(orderNumber)}`).toString().slice(0, 300);
 
     let intent: { id: string; clientSecret: string; status: string };
     try {

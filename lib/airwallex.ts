@@ -60,8 +60,10 @@ export async function createAirwallexPaymentIntent(params: {
       },
     }),
   });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(`create intent failed: HTTP ${res.status} ${JSON.stringify(data).slice(0, 200)}`);
+  const rawText = await res.text();
+  let data: any = {};
+  try { data = JSON.parse(rawText); } catch {}
+  if (!res.ok) throw new Error(`create intent failed: HTTP ${res.status} body=${rawText.slice(0, 300)}`);
   if (!data?.id || !data?.client_secret) throw new Error('create intent missing fields');
   return { id: data.id, clientSecret: data.client_secret, status: data.status || '' };
 }

@@ -95,6 +95,26 @@ export async function finalizeAirwallexJpOrder(intentId: string): Promise<JpFina
     record.confirmation_email_status = 'failed';
   }
 
+  // 管理员收款通知（2026-11-24 EN 案例后补同款）
+  try {
+    const { sendEmail: notifyAdminJp } = await import('@/lib/smtp');
+    await notifyAdminJp({
+      host: SMTP_HOST, port: SMTP_PORT, user: SMTP_USER, pass: SMTP_PASS!,
+      from: `FreshLock JP Website <${SMTP_USER}>`,
+      to: TO_EMAIL,
+      subject: `💰 JP订单已付款: ${record.order_number} | ${yen(record.total)} JPY`,
+      html: `<div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#222;">
+        <h2 style="color:#0f4c3a;border-bottom:2px solid #0f4c3a;padding-bottom:6px;">💰 JP 收款通知</h2>
+        <p><strong>单号:</strong> ${record.order_number}<br/>
+        <strong>金额:</strong> ${yen(record.total)} JPY<br/>
+        <strong>渠道:</strong> Airwallex JP（卡 / Google Pay）<br/>
+        <strong>客户:</strong> ${esc(record.customer.email)}</p>
+      </div>`,
+    });
+  } catch (e) {
+    console.error('finalize jp: admin notify failed', e);
+  }
+
   try {
     await saveJpOrder(record);
   } catch (err) {

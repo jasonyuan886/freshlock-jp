@@ -15,6 +15,7 @@ export async function GET(request: Request) {
     return NextResponse.json({
       paid: record.status === 'PAID',
       orderNumber: record.order_number,
+      orderId: record.airwallex_intent_id,
       customer_email: record.customer.email,
       amount_total: record.status === 'PAID' ? record.total : null,
     });

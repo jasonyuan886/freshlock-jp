@@ -8,10 +8,12 @@ export function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const path = req.nextUrl.pathname;
 
-  const enPath = SHARED_EXACT.has(path) || SHARED_PRODUCTS.has(path) ? path : null;
+  const shared = SHARED_EXACT.has(path) || SHARED_PRODUCTS.has(path);
   const self = `https://jp.freshlocksealer.com${path}`;
-  const links = [`<${self}>; rel="alternate"; hreflang="en"`, `<${self}>; rel="alternate"; hreflang="x-default"`];
-  if (enPath) links.push(`<${EN_BASE}${enPath}>; rel="alternate"; hreflang="en"`);
+  // 修正：自指必须标 ja（原来错标 en），x-default 指向 EN 主站
+  const links = [`<${self}>; rel="alternate"; hreflang="ja"`];
+  if (shared) links.push(`<${EN_BASE}${path}>; rel="alternate"; hreflang="en"`);
+  links.push(`<${EN_BASE}${shared ? path : '/'}>; rel="alternate"; hreflang="x-default"`);
   res.headers.set('Link', links.join(', '));
 
   return res;

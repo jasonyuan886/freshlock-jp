@@ -25,21 +25,21 @@ const FEED_META: Record<string, { title: string; desc: string; mpn: string; prod
     ]
   },
   "vacuum-seal-bags-30-pack": {
-    "title": "プレミアムエンボスバッグ 30枚入り（中サイズ26×28cm）— BPAフリー・繰り返し使用可",
-    "desc": "90μm厚PA+PE多層エンボスバッグ30枚。白い丸い片一方向バルブ+リンゴ緑zip-slider採用。BPAフリー・-20℃〜100℃対応・冷凍・湯せんOK。繰り返し使用可。ほとんどのバルブ式ハンディポンプに対応。",
+    "title": "プレミアムエンボスバッグ 30枚入り（中サイズ24.7×23.8cm）— BPAフリー・繰り返し使用可",
+    "desc": "90μm厚PA+PE多層エンボスバッグ30枚。白い丸い片一方向バルブ+ピンクzip-slider採用。袋面にDate/Noteラベル区付き。BPAフリー・-20℃〜100℃対応・冷凍・湯せんOK。繰り返し使用可。ほとんどのバルブ式ハンディポンプに対応。",
     "mpn": "FL-BAG-M30",
     "productType": "真空保存袋",
     "images": [
-      "https://jp.freshlocksealer.com/images/products/bags-2.jpg"
+      "https://jp.freshlocksealer.com/images/products/bags-3sizes.jpg"
     ]
   },
   "vacuum-seal-bags-50-pack": {
-    "title": "プレミアムエンボスバッグ 50枚入り（大サイズ26×34cm・徳用）— BPAフリー・繰り返し使用可",
-    "desc": "大サイズ（26×34cm）50枚入り徳用パック。90μm厚PA+PE多層エンボス・白丸バルブ+zip-slider。家族分・まとめ買い・低温調理（スーヴィード）に。BPAフリー・-20℃〜100℃対応・繰り返し使用可。1枚あたり最安値。",
+    "title": "プレミアムエンボスバッグ 50枚入り（大サイズ30.5×28cm・徳用）— BPAフリー・繰り返し使用可",
+    "desc": "大サイズ（30.5×28cm）50枚入り徳用パック。90μm厚PA+PE多層エンボス・白丸バルブ+ピンクzip-slider・Date/Noteラベル区付き。家族分・まとめ買い・低温調理（スーヴィード）に。BPAフリー・-20℃〜100℃対応・繰り返し使用可。1枚あたり最安値。",
     "mpn": "FL-BAG-L50",
     "productType": "真空保存袋",
     "images": [
-      "https://jp.freshlocksealer.com/images/products/bags-5.jpg"
+      "https://jp.freshlocksealer.com/images/products/bags-5sizes.jpg"
     ]
   }
 };

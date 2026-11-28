@@ -69,7 +69,7 @@ function Hero() {
           </div>
           <div className="flex justify-center md:justify-center mt-8 md:mt-0">
             <Image src="/images/products/sealer-main.jpg"
-              alt="FreshLock Pro ハンディ真空ポンプ 本体。パールホワイトのダイヤ柄ボディにクロムメッキのダイヤモンドカット天面、ブラックの半透明パネルにブルーLED数表示、シルバーの電源ボタン。着脱式の透明なドリップトレイ（汁受けカップ）と、リンゴ緑のzip-sliderが付いた90μmエンボスバッグを併置。"
+              alt="FreshLock Pro ハンディ真空ポンプ 本体。パールホワイトのダイヤ柄ボディにクロムメッキのダイヤモンドカット天面、ブラックの半透明パネルにブルーLED数表示、シルバーの電源ボタン。着脱式の透明なドリップトレイ（汁受けカップ）と、ピンク緑のzip-sliderが付いた90μmエンボスバッグを併置。"
               className="rounded-2xl shadow-2xl w-64 md:w-full max-w-md md:max-w-none"
               width={600}
               height={600}
@@ -307,7 +307,7 @@ function HowItWorks() {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { n: '1', t: '食材を袋に入れてチャックを閉じる', d: 'バルブ付きエンボス袋に食材を入れ、リンゴ緑のzip-sliderでダブルトラックチャックをしっかり閉じます。' },
+            { n: '1', t: '食材を袋に入れてチャックを閉じる', d: 'バルブ付きエンボス袋に食材を入れ、ピンク緑のzip-sliderでダブルトラックチャックをしっかり閉じます。' },
             { n: '2', t: 'ノズルをバルブに当ててボタンを押す', d: '白い丸バルブにノズルを当て、電源ボタンをワンプッシュ。自動で空気を抜き取ります。' },
             { n: '3', t: '冷蔵・冷凍・持ち出しOK', d: '片一方向弁が自動ロックして真空をキープ。冷凍焼けを防止し、作り置きも離乳食もおせちも長持ちします。' },
           ].map((s) => (
